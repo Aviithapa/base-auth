@@ -32,6 +32,7 @@
     <!-- App css -->
     <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+
 </head>
 
 <body>
@@ -57,48 +58,47 @@
                     <div class="login-card login-dark">
                         <div>
                             <div>
-                                <a class="logo" href="index.html"><img class="max-w-full h-auto for-light"
-                                        src="../assets/images/logo/logo.png" alt="looginpage" /><img
+                                <a class="logo" href="index.html"><img class="max-w-full h-[100px] for-light"
+                                        src="../assets/images/logo/logo.png" style="150px" alt="looginpage" /><img
                                         class="max-w-full h-auto for-dark" src="../assets/images/logo/logo_dark.png"
                                         alt="looginpage" /></a>
                             </div>
                             <div class="login-main">
-                                <form class="theme-form" method="POST" action="{{ route('auth.confirm.submit') }}">
+                                <form method="POST" action="{{ route('forgot.otp.submit') }}" class="theme-form">
                                     @csrf
+                                    <h4>OTP Verify</h4>
+                                    <p>Enter your OTP to verify your account</p>
 
-                                    <h6 class="mt-4">Create Your Password</h6>
+                                    @if (session('status'))
+                                        <div class="alert alert-success">
+                                            {{ session('status') }}
+                                        </div>
+                                    @endif
+
+                                    @if ($errors->has('otp'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('otp') }}
+                                        </div>
+                                    @endif
 
                                     <div class="form-group">
-                                        <label class="col-form-label">New Password</label>
-                                        <div class="form-input relative">
-                                            <input class="form-control" type="password" name="password" required
-                                                placeholder="*********" />
-                                            <div class="show-hide"><span class="show"></span></div>
+                                        <label class="col-form-label pt-0">Enter OTP</label>
+                                        <div class="grid grid-cols-1 card-gap">
+                                            <div class="col-auto">
+                                                <input class="form-control text-center opt-text" type="text"
+                                                    name="otp" maxlength="5" value="{{ old('otp') }}"
+                                                    required />
+                                            </div>
                                         </div>
-                                        @error('password')
-                                            <span class="text-danger text-sm">{{ $message }}</span>
-                                        @enderror
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="col-form-label">Retype Password</label>
-                                        <input class="form-control" type="password" name="password_confirmation"
-                                            required placeholder="*********" />
+                                    <div class="form-group mt-4">
+                                        <button type="submit" class="btn btn-primary w-100">Verify OTP</button>
                                     </div>
 
-                                    <div class="form-group mb-0">
-                                        <div class="form-check flex gap-1 items-center">
-                                            <input class="checkbox-primary form-check-input custom-checkbox"
-                                                id="checkbox1" type="checkbox" />
-                                            <label class="text-muted form-check-label !mb-0" for="checkbox1">
-                                                Remember password
-                                            </label>
-                                        </div>
-
-                                        <button class="btn btn-primary btn-block w-full text-white mt-[24px]"
-                                            type="submit">
-                                            Done
-                                        </button>
+                                    <div class="mt-4 mb-4 text-center">
+                                        <span class="reset-password-link">Didn't receive OTP?  <a
+                                                class="btn-link font-danger underline" href="#">Resend</a></span>
                                     </div>
                                 </form>
                             </div>

@@ -40,28 +40,42 @@
                                     alt="looginpage" /></a>
                         </div>
                         <div class="login-main">
-                            <form class="theme-form">
+                            <form class="theme-form" method="POST" action="{{ route('auth.login.submit') }}">
+                                @csrf
+
                                 <h4>Sign in to account</h4>
                                 <p>Enter your email & password to login</p>
+
                                 <div class="form-group">
-                                    <label class="col-form-label">Email Address</label><input class="form-control"
-                                        type="email" required="" placeholder="test@gmail.com" />
+                                    <label class="col-form-label">Email Address / Phone Number</label>
+                                    <input class="form-control" type="text" name="login"
+                                        value="{{ old('login') }}" required placeholder="test@gmail.com" />
+                                    @error('login')
+                                        <span class="text-danger text-sm">{{ $message }}</span>
+                                    @enderror
                                 </div>
+
                                 <div class="form-group">
                                     <label class="col-form-label">Password</label>
                                     <div class="form-input relative">
-                                        <input class="form-control" type="password" name="login[password]"
-                                            required="" placeholder="*********" />
+                                        <input class="form-control" type="password" name="password" required
+                                            placeholder="*********" />
                                         <div class="show-hide"><span class="show"> </span></div>
                                     </div>
+                                    @error('password')
+                                        <span class="text-danger text-sm">{{ $message }}</span>
+                                    @enderror
                                 </div>
+
                                 <div class="form-group mb-0">
                                     <div class="form-check flex gap-1 items-center">
-                                        <input class="checkbox-primary form-check-input custom-checkbox" id="checkbox1"
-                                            type="checkbox" /><label class="text-muted form-check-label !mb-0"
-                                            for="checkbox1">Remember password</label>
+                                        <input class="checkbox-primary form-check-input custom-checkbox" id="remember"
+                                            type="checkbox" name="remember" />
+                                        <label class="text-muted form-check-label !mb-0" for="remember">Remember
+                                            password</label>
                                     </div>
-                                    <a class="link" href="forgot-password">Forgot password?</a>
+                                    <a class="link" href="{{ route('auth.forgot') }}">Forgot password?</a>
+
                                     <div class="text-end">
                                         <button class="btn btn-primary btn-block w-full text-white mt-[24px]"
                                             type="submit">
@@ -71,9 +85,11 @@
                                 </div>
 
                                 <p class="text-center mt-[24px] !mb-0">
-                                    Don't have account?<a class="ms-2" href="sign-up">Create Account</a>
+                                    Don't have an account? <a class="ms-2" href="{{ route('auth.register') }}">Create
+                                        Account</a>
                                 </p>
                             </form>
+
                         </div>
                     </div>
                 </div>

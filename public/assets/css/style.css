@@ -81326,3 +81326,9 @@ body[class*=dark-] .for-light {
 ==========================**/
 
 /*# sourceMappingURL=style.css.map */
+
+
+/* text color */
+.text-red-600 {
+    color:red;
+}

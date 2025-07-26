@@ -14,10 +14,19 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('phone')->unique()->nullable();
+            $table->timestamp('email_verified_at')->nullable(); // Laravel's native email verification
             $table->string('password');
-            $table->rememberToken();
+
+            $table->boolean('is_phone_verified')->default(false);
+
+            $table->string('email_verification_token')->nullable(); // Optional if not using Laravel's default
+            $table->string('phone_otp')->nullable();
+
+            $table->enum('status', ['active', 'inactive', 'banned'])->default('active');
+
+            $table->rememberToken(); // Adds remember_token
             $table->timestamps();
         });
 

@@ -58,23 +58,24 @@
                     <div class="login-card login-dark">
                         <div>
                             <div>
-                                <a class="logo" href="index.html"><img class="max-w-full h-auto for-light"
-                                        src="../assets/images/logo/logo.png" alt="looginpage" /><img
+                                <a class="logo" href="index.html"><img class="max-w-full h-[100px] for-light"
+                                        src="../assets/images/logo/logo.png" style="150px" alt="looginpage" /><img
                                         class="max-w-full h-auto for-dark" src="../assets/images/logo/logo_dark.png"
                                         alt="looginpage" /></a>
                             </div>
                             <div class="login-main">
-                                <form class="theme-form">
+                                <form class="theme-form" method="POST" action="{{ route('password.forgot') }}">
+                                    @csrf
                                     <h4>Reset Your Password</h4>
                                     <div class="form-group">
-                                        <label class="col-form-label">Enter Your Mobile Number</label>
+                                        <label class="col-form-label">Enter Your Email or Mobile Number</label>
                                         <div class="grid grid-cols-12 card-gap">
-                                            <div class="col-span-3 sm:col-span-4">
-                                                <input class="form-control mb-1" type="number" placeholder="+ 977" />
-                                            </div>
-                                            <div class="col-span-9 sm:col-span-8">
-                                                <input class="form-control mb-1" type="tel"
-                                                    placeholder="0000000000" />
+                                            <div class="col-span-12 sm:col-span-12">
+                                                <input class="form-control mb-1" type="text" name="identifier"
+                                                    value="{{ old('identifier') }}" placeholder="Email or Phone" />
+                                                @error('identifier')
+                                                    <span class="text-danger text-sm">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                             <div class="col-span-12">
                                                 <div class="text-end">
@@ -86,7 +87,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </form>
                             </div>
                         </div>

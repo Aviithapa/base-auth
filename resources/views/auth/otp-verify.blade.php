@@ -58,35 +58,48 @@
                     <div class="login-card login-dark">
                         <div>
                             <div>
-                                <a class="logo" href="index.html"><img class="max-w-full h-auto for-light"
-                                        src="../assets/images/logo/logo.png" alt="looginpage" /><img
+                                <a class="logo" href="index.html"><img class="max-w-full h-[100px] for-light"
+                                        src="../assets/images/logo/logo.png" style="150px" alt="looginpage" /><img
                                         class="max-w-full h-auto for-dark" src="../assets/images/logo/logo_dark.png"
                                         alt="looginpage" /></a>
                             </div>
                             <div class="login-main">
-                                <form class="theme-form">
-                                    <div class="mt-[24px] mb-[24px]">
-                                        <span class="reset-password-link">If don't receive OTP?  <a
-                                                class="btn-link font-danger underline" href="#">Resend</a></span>
-                                    </div>
+                                <form method="POST" action="{{ route('auth.otp.verify') }}" class="theme-form">
+                                    @csrf
+                                    <h4>OTP Verify</h4>
+                                    <p>Enter your OTP to verify your account</p>
+
+                                    @if (session('status'))
+                                        <div class="alert alert-success">
+                                            {{ session('status') }}
+                                        </div>
+                                    @endif
+
+                                    @if ($errors->has('otp'))
+                                        <div class="alert alert-danger">
+                                            {{ $errors->first('otp') }}
+                                        </div>
+                                    @endif
+
                                     <div class="form-group">
                                         <label class="col-form-label pt-0">Enter OTP</label>
-                                        <div class="grid grid-cols-3 card-gap">
+                                        <div class="grid grid-cols-1 card-gap">
                                             <div class="col-auto">
                                                 <input class="form-control text-center opt-text" type="text"
-                                                    value="00" maxlength="2" />
-                                            </div>
-                                            <div class="col-auto">
-                                                <input class="form-control text-center opt-text" type="text"
-                                                    value="00" maxlength="2" />
-                                            </div>
-                                            <div class="col-auto">
-                                                <input class="form-control text-center opt-text" type="text"
-                                                    value="00" maxlength="2" />
+                                                    name="otp" maxlength="5" value="{{ old('otp') }}"
+                                                    required />
                                             </div>
                                         </div>
                                     </div>
 
+                                    <div class="form-group mt-4">
+                                        <button type="submit" class="btn btn-primary w-100">Verify OTP</button>
+                                    </div>
+
+                                    <div class="mt-4 mb-4 text-center">
+                                        <span class="reset-password-link">Didn't receive OTP?  <a
+                                                class="btn-link font-danger underline" href="#">Resend</a></span>
+                                    </div>
                                 </form>
                             </div>
                         </div>

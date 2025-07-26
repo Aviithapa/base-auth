@@ -43,54 +43,84 @@
                 <div class="login-card login-dark">
                     <div>
                         <div>
-                            <a class="logo" href="index.html"><img class="max-w-full h-auto for-light"
-                                    src="../assets/images/logo/logo.png" alt="looginpage" /><img
+                            <a class="logo" href="index.html"><img class="max-w-full h-[100px] for-light"
+                                    src="../assets/images/logo/logo.png" style="height: 100px;" alt="looginpage" /><img
                                     class="max-w-full h-auto for-dark" src="../assets/images/logo/logo_dark.png"
                                     alt="looginpage" /></a>
                         </div>
                         <div class="login-main create-account">
-                            <form class="theme-form">
+                            <form method="POST" action="{{ route('auth.register.submit') }}" class="theme-form">
+                                @csrf
                                 <h4>Create your account</h4>
                                 <p>Enter your personal details to create account</p>
+
                                 <div class="form-group">
                                     <label class="col-form-label pt-0">Your Name</label>
                                     <div class="grid grid-cols-12 gap-2">
-                                        <div class="col-span-6 sm:col-span-12">
-                                            <input class="form-control" type="text" required=""
-                                                placeholder="First name" />
+                                        <div class="col-span-12 sm:col-span-12">
+                                            <input name="name" class="form-control" type="text"
+                                                placeholder="Full name" value="{{ old('name') }}" />
+                                            @error('name')
+                                                <span class="text-red-600 text-sm">{{ $message }}</span>
+                                            @enderror
                                         </div>
-                                        <div class="col-span-6 sm:col-span-12">
-                                            <input class="form-control" type="text" required=""
-                                                placeholder="Last name" />
-                                        </div>
+
                                     </div>
                                 </div>
+
                                 <div class="form-group">
-                                    <label class="col-form-label">Email Address</label><input class="form-control"
-                                        type="email" required="" placeholder="test@gmail.com" />
+                                    <label class="col-form-label">Email Address</label>
+                                    <input name="email" class="form-control" type="email"
+                                        placeholder="test@gmail.com" value="{{ old('email') }}" />
+                                    @error('email')
+                                        <span class="text-red-600 text-sm">{{ $message }}</span>
+                                    @enderror
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label">Phone </label>
+                                    <input name="number" class="form-control" type="phone" placeholder="9867XXXXXX"
+                                        value="{{ old('phone') }}" />
+                                    @error('phone')
+                                        <span class="text-red-600 text-sm">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="form-group">
                                     <label class="col-form-label">Password</label>
                                     <div class="form-input relative">
-                                        <input class="form-control" type="password" name="login[password]"
-                                            required="" placeholder="*********" />
-                                        <div class="show-hide"><span class="show"></span></div>
+                                        <input name="password" class="form-control" type="password"
+                                            placeholder="*********" />
                                     </div>
+                                    @error('password')
+                                        <span class="text-red-600 text-sm">{{ $message }}</span>
+                                    @enderror
                                 </div>
+
                                 <div class="form-group mb-0">
                                     <div class="checkbox p-0">
-                                        <input id="checkbox1" type="checkbox" /><label class="text-muted"
-                                            for="checkbox1">I agree to the terms & conditions and<a class="ms-2"
-                                                href="#">Privacy Policy</a></label>
+                                        <input name="terms" id="terms" type="checkbox"
+                                            {{ old('terms') ? 'checked' : '' }} />
+
+                                        <label class="text-muted" for="terms">
+                                            I agree to the terms & conditions and <a class="ms-2"
+                                                href="#">Privacy Policy</a>
+                                        </label>
+                                        @error('terms')
+                                            <span class="text-red-600 text-sm">{{ $message }}</span>
+                                        @enderror
                                     </div>
-                                    <button class="btn btn-primary btn-block w-full" type="submit">
+
+                                    <button class="btn btn-primary btn-block w-full mt-2" type="submit">
                                         Create Account
                                     </button>
                                 </div>
+
                                 <p class="mt-4 mb-0">
-                                    Already have an account?<a class="ms-2" href="login">Sign in</a>
+                                    Already have an account?<a class="ms-2" href="/auth/login">Sign in</a>
                                 </p>
                             </form>
+
                         </div>
                     </div>
                 </div>

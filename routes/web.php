@@ -2,29 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
+require __DIR__.'/auth.php';
+require __DIR__.'/backend.php';
+
+// Home route
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
-
-Route::get('/login', function () {
-    return view('auth.login');
-});
-
-Route::get('/sign-up', function () {
-    return view('auth.registration');
-});
-
-Route::get('/forgot-password', function () {
-    return view('auth.forgot-password');
-});
-
-Route::get('/otp-verify', function () {
-    return view('auth.otp-verify');
-});
-
-
-
-Route::get('/confirm-password', function () {
-    return view('auth.confirm-password');
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
 });
