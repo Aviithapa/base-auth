@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class RegistrationNotification extends Notification
+class RegistrationNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -29,7 +29,7 @@ class RegistrationNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail', SmsChannel::class];
+        return [SmsChannel::class];
     }
 
     /**
