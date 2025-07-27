@@ -93,6 +93,8 @@ class AuthController extends Controller
                 'is_phone_verified' => false,
             ]);
 
+            $user->assignRole('user');
+
             $user->notify(new RegistrationNotification($user));
 
             DB::commit();

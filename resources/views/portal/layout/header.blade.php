@@ -26,23 +26,7 @@
               </div>
           </div>
           <div class="left-header col-span-5 xxl:col-span-6 xl:col-span-5 lg:col-span-4 md:col-span-3">
-              <div class="notification-slider">
-                  <div class="h-full !flex items-center">
-                      <img src="../assets/images/giftools.gif" alt="gif" />
-                      <h6 class="mb-0 font-normal">
-                          <span class="font-primary">Don't Miss Out! </span><span class="f-light">
-                              Our new update has been released.</span>
-                      </h6>
-                      <i class="icon-arrow-top-right f-light"></i>
-                  </div>
-                  <div class="h-full !flex items-center">
-                      <img src="../assets/images/giftools.gif" alt="gif" />
-                      <h6 class="mb-0 font-normal">
-                          <span class="f-light">Something you love is now on sale!</span>
-                      </h6>
-                      <a class="ms-1" href="https://1.envato.market/3GVzd" target="_blank">Buy now !</a>
-                  </div>
-              </div>
+
           </div>
           <div
               class="nav-right col-span-7 xxl:col-span-6 xl:col-span-7 md:col-span-11 float-right right-header p-0 ms-auto">
@@ -54,7 +38,7 @@
                                   <i class="flag-icon flag-icon-us"></i><span class="lang-txt">EN</span>
                               </div>
                           </div>
-                          <div class="more_lang">
+                          {{-- <div class="more_lang">
                               <div class="lang selected" data-value="en">
                                   <i class="flag-icon flag-icon-us"></i><span class="lang-txt">English<span>
                                           (US)</span></span>
@@ -79,7 +63,7 @@
                                   <i class="flag-icon flag-icon-ae"></i><span class="lang-txt">لعربية <span>
                                           (ae)</span></span>
                               </div>
-                          </div>
+                          </div> --}}
                       </div>
                   </li>
                   <li class="fullscreen-body">
@@ -87,12 +71,12 @@
                               <use href="../assets/svg/icon-sprite.svg#full-screen"></use>
                           </svg></span>
                   </li>
-                  <li>
+                  {{-- <li>
                       <span class="header-search"><svg>
                               <use href="../assets/svg/icon-sprite.svg#search"></use>
                           </svg></span>
-                  </li>
-                  <li class="onhover-dropdown">
+                  </li> --}}
+                  {{-- <li class="onhover-dropdown">
                       <svg>
                           <use href="../assets/svg/icon-sprite.svg#star"></use>
                       </svg>
@@ -154,8 +138,8 @@
                               </div>
                           </div>
                       </div>
-                  </li>
-                  <li>
+                  </li> --}}
+                  {{-- <li>
                       <div class="mode">
                           <svg>
                               <use href="../assets/svg/icon-sprite.svg#moon"></use>
@@ -296,21 +280,22 @@
                               </li>
                           </ul>
                       </div>
-                  </li>
+                  </li> --}}
                   <li class="profile-nav onhover-dropdown pe-0 py-0">
                       <div class="flex profile-media items-center">
                           <img class="-[10px]" src="../assets/images/dashboard/profile.png" alt="" />
                           <div class="grow w-[calc(100%_-_250px)]">
-                              <span>Emay Walter</span>
+                              <span>{{ Auth::user()->name }}</span>
                               <p class="mb-0">
-                                  Admin <i class="align-middle fa-solid fa-angle-down"></i>
+                                  {{ Auth::user()->getRoleNames()->first() }} <i
+                                      class="align-middle fa-solid fa-angle-down"></i>
                               </p>
                           </div>
                       </div>
                       <ul class="profile-dropdown onhover-show-div">
-                          <li>
-                              <a class="flex items-center" href="sign-up.html"><i
-                                      data-feather="user"></i><span>Account </span></a>
+                          {{-- <li>
+                              <a class="flex items-center" href="sign-up.html"><i data-feather="user"></i><span>Account
+                                  </span></a>
                           </li>
                           <li>
                               <a class="flex items-center" href="mail-box.html"><i
@@ -323,10 +308,9 @@
                           <li>
                               <a class="flex items-center" href="add-user.html"><i
                                       data-feather="settings"></i><span>Settings</span></a>
-                          </li>
+                          </li> --}}
                           <li>
-                              <form id="logout-form" action="{{ route('auth.logout') }}" method="POST"
-                                  class="hidden">
+                              <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" class="hidden">
                                   @csrf
                               </form>
 

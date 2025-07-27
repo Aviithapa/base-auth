@@ -1,388 +1,300 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('portal.layout.app')
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Cuba admin is super flexible, powerful, clean &amp; modern responsive Tailwind admin template with unlimited possibilities." />
-    <meta name="keywords"
-        content="admin template, Cuba admin template, dashboard template, flat admin template, responsive admin template, web app" />
-    <meta name="author" content="pixelstrap" />
-    <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon" />
-    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon" />
-    <title>Form Validation | Cuba - Premium Admin Template By Pixelstrap</title>
-    <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
-        rel="stylesheet" />
-
-    <!-- Font Awesome-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/fontawesome.css" />
-    <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/icofont.css" />
-    <!-- Themify icon-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/themify.css" />
-    <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/flag-icon.css" />
-    <!-- Feather icon-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css" />
-    <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/scrollbar.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/quill.snow.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/quill.bubble.css" />
-    <!-- Plugins css Ends-->
-    <!-- App css-->
-    <link rel="stylesheet" href="../assets/css/tailwind.css" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
-</head>
-
-<body>
-
-    <!-- tap on tap ends--><!-- page-wrapper Start-->
-    <div class="p-20">
-        <!-- Page Header Start-->
-
-        <!-- Page Header Ends                              --><!-- Page Body Start-->
-        <div class="page-body-wrapper">
-
-            <div class="page-body validation-forms">
-                <div class="container-fluid">
-                    <div class="page-title">
-                        <h3>Nepal Pharmacy Council Training Participation Form</h3>
-                    </div>
+@section('content')
+    <div class="container w-full">
+        <div class="page-title">
+            <div class="grid grid-cols-12 mx-2 items-center">
+                <div class="col-span-6 sm:col-span-12">
+                    <h3>Nepal Pharmacy Council Training Participation Form</h3>
                 </div>
-                <!-- Container-fluid starts-->
-                <div class="container-fluid">
-                    <div class="grid grid-cols-12 card-gap">
-                        <div class="col-span-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>Personal Details</h5>
-                                </div>
-                                <div class="card-body">
-                                    <form class="grid grid-cols-12 gap-3 needs-validation custom-input" novalidate="">
-                                        <div class="col-span-4 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip01">First
-                                                Name</label><input class="form-control" id="validationTooltip01"
-                                                type="text" placeholder="Mark" required="" />
-                                            <div class="valid-tooltip">Looks good!</div>
-                                        </div>
-                                        <div class="col-span-4 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip02">Middle
-                                                Name</label><input class="form-control" id="validationTooltip02"
-                                                type="text" placeholder="Otto" required="" />
-                                            <div class="valid-tooltip">Looks good!</div>
-                                        </div>
-                                        <div class="col-span-4 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip02">Last
-                                                Name</label><input class="form-control" id="validationTooltip02"
-                                                type="text" placeholder="Otto" required="" />
-                                            <div class="valid-tooltip">Looks good!</div>
-                                        </div>
-
-                                        <div class="col-span-6 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip03">Council Registration
-                                                Number (NPC No.)</label><input class="form-control"
-                                                id="validationTooltip03" type="text" required="" />
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid city.
-                                            </div>
-                                        </div>
-                                        <div class="col-span-3 md:col-span-12 position-relative">
-                                            <label class="form-label"
-                                                for="validationTooltip04">Designation</label><select
-                                                class="form-select" id="validationTooltip04" required="">
-                                                <option selected="" disabled="" value="">
-                                                    Choose...
-                                                </option>
-                                                <option>Pharmacist</option>
-                                                <option>Pharmacy Assistant</option>
-                                            </select>
-                                            <div class="invalid-tooltip">
-                                                Please select a valid designation.
-                                            </div>
-                                        </div>
-                                        <div class="col-span-3 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip04">Gender</label><select
-                                                class="form-select" id="validationTooltip04" required="">
-                                                <option selected="" disabled="" value="">
-                                                    Choose...
-                                                </option>
-                                                <option>Male</option>
-                                                <option>Female</option>
-                                                <option>Other</option>
-                                            </select>
-                                            <div class="invalid-tooltip">
-                                                Please select a valid designation.
-                                            </div>
-                                        </div>
-                                        <div class="col-span-4 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip05">Date of
-                                                birth</label><input class="form-control" id="validationTooltip05"
-                                                type="text" required="" />
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid date of birth.
-                                            </div>
-                                        </div>
-                                        <div class="col-span-4 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip05">Citizenship
-                                                Number</label><input class="form-control" id="validationTooltip05"
-                                                type="text" required="" />
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid citizenship number.
-                                            </div>
-                                        </div>
-                                        <div class="col-span-4 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip05">Issued
-                                                District</label><input class="form-control" id="validationTooltip05"
-                                                type="text" required="" />
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid issued district.
-                                            </div>
-                                        </div>
-                                        <div class="col-span-6 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip05">Email</label><input
-                                                class="form-control" id="validationTooltip05" type="text"
-                                                required="" />
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid email.
-                                            </div>
-                                        </div>
-                                        <div class="col-span-6 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip05">Contact
-                                                Number</label><input class="form-control" id="validationTooltip05"
-                                                type="text" required="" />
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid contact number.
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-12">
-                                            <h5>Educational Qualification </h5>
-                                        </div>
-                                        <div class="col-span-4 md:col-span-12 position-relative">
-                                            <label class="form-label"
-                                                for="validationTooltip04">Qualification</label><select
-                                                class="form-select" id="validationTooltip04" required="">
-                                                <option selected="" disabled="" value="">
-                                                    Choose...
-                                                </option>
-                                                <option>Degree</option>
-                                                <option>Diploma</option>
-                                            </select>
-                                            <div class="invalid-tooltip">
-                                                Please select a valid qualification.
-                                            </div>
-                                        </div>
-                                        <div class="col-span-4 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip05">Institution
-                                                Attended</label><input class="form-control" id="validationTooltip05"
-                                                type="text" required="" />
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid institution name.
-                                            </div>
-                                        </div>
-                                        <div class="col-span-4 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip05">Year of
-                                                Graduation</label><input class="form-control" id="validationTooltip05"
-                                                type="text" required="" />
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid .
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-12">
-                                            <h5>Current Professional Activity </h5>
-                                        </div>
-                                        <div class="col-span-6 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip05">Current Workplace
-                                                Name</label><input class="form-control" id="validationTooltip05"
-                                                type="text" required="" />
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid current workplace name.
-                                            </div>
-                                        </div>
-                                        <div class="col-span-6 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip05">Workplace
-                                                Address</label><input class="form-control" id="validationTooltip05"
-                                                type="text" required="" />
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid workplace address.
-                                            </div>
-                                        </div>
-                                        <div class="col-span-6 md:col-span-12 position-relative">
-                                            <label class="form-label"
-                                                for="validationTooltip05">Position/Designation</label><input
-                                                class="form-control" id="validationTooltip05" type="text"
-                                                required="" />
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid position/designation.
-                                            </div>
-                                        </div>
-                                        <div class="col-span-6 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip04">Employment
-                                                Type</label><select class="form-select" id="validationTooltip04"
-                                                required="">
-                                                <option selected="" disabled="" value="">
-                                                    Choose...
-                                                </option>
-                                                <option>Full time</option>
-                                                <option>Part time</option>
-                                                <option>Volunteer</option>
-                                            </select>
-                                            <div class="invalid-tooltip">
-                                                Please select a valid employment type.
-                                            </div>
-                                        </div>
-                                        <div class="col-span-12 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip05">Major Roles and
-                                                Responsibility</label>
-                                            <textarea class="form-control" id="validationTooltip05" required=""></textarea>
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid major roles and responsibility.
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-12">
-                                            <div class="">
-                                                <div class="card-header">
-                                                    <h4>Reason for Attending the GPP Training</h4>
-                                                    <label class="form-label">
-                                                        Please explain briefly why you are participating in the GPP
-                                                        training.
-                                                    </label>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="toolbar-box">
-                                                        <div id="toolbar7">
-                                                            <span class="ql-formats"><select class="ql-size">
-                                                                    <option value="small">Small</option>
-                                                                    <option selected="">Normal</option>
-                                                                    <option value="large">Large</option>
-                                                                    <option value="huge">Huge</option>
-                                                                </select></span><span class="ql-formats"><button
-                                                                    class="ql-bold">Bold</button><button
-                                                                    class="ql-italic">Italic</button><button
-                                                                    class="ql-underline">Underline</button><button
-                                                                    class="ql-strike">Strike</button><button
-                                                                    class="ql-script" value="sub"></button><button
-                                                                    class="ql-script"
-                                                                    value="super"></button></span><span
-                                                                class="ql-formats"><button class="ql-header"
-                                                                    value="1"></button><button class="ql-header"
-                                                                    value="2"></button></span><span
-                                                                class="ql-formats"><button class="ql-list"
-                                                                    value="ordered">List</button><button
-                                                                    class="ql-list"
-                                                                    value="bullet">Bullet</button><button
-                                                                    class="ql-indent" value="-1"></button><button
-                                                                    class="ql-indent"
-                                                                    value="+1"></button></span><span
-                                                                class="ql-formats"><button
-                                                                    class="ql-link">Link</button><button
-                                                                    class="ql-image">Image</button><button
-                                                                    class="ql-video">Video</button><select
-                                                                    class="ql-color"></select><select
-                                                                    class="ql-background"></select></span><!-- Add more options here--><span
-                                                                class="ql-formats"><button
-                                                                    class="ql-blockquote">Blockquote</button><button
-                                                                    class="ql-code-block"></button></span><span
-                                                                class="ql-formats"><button class="ql-align"
-                                                                    value=""></button><button class="ql-align"
-                                                                    value="center"></button><button class="ql-align"
-                                                                    value="right"></button><button class="ql-align"
-                                                                    value="justify"></button></span><span
-                                                                class="ql-formats">
-                                                                <button class="ql-clean"></button></span>
-                                                        </div>
-                                                        <div class="quill-paragraph" id="editor7">
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-12">
-                                            <h5>Declaration</h5>
-                                            I hereby declare that the information provided above is true, complete, and
-                                            correct to the best of my knowledge. I am aware that any false or misleading
-                                            information may result in disqualification from the training or future
-                                            regulatory actions by the Nepal Pharmacy Council. <br />
-
-                                            I am participating in this training to enhance my professional competency
-                                            and
-                                            improve the quality of pharmacy services I provide in line with Good
-                                            Pharmacy
-                                            Practice standards. <br />
-
-
-                                        </div>
-                                        <div class="col-span-6 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip05">Date</label><input
-                                                class="form-control" id="validationTooltip05" type="text"
-                                                required="" />
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid date.
-                                            </div>
-                                        </div><br />
-                                        <div class="col-span-6 md:col-span-12 position-relative">
-                                            <label class="form-label" for="validationTooltip05">Place</label><input
-                                                class="form-control" id="validationTooltip05" type="text"
-                                                required="" />
-                                            <div class="invalid-tooltip">
-                                                Please provide a valid place.
-                                            </div>
-                                        </div>
-
-                                        <div class="col-span-12">
-                                            <button class="btn btn-primary text-white" type="submit">
-                                                Submit form
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <ol class="breadcrumb flex gap-2">
+                        <li class="breadcrumb-item">
+                            <a href="index.html"><svg class="stroke-icon">
+                                    <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
+                                </svg></a>
+                        </li>
+                        <li class="breadcrumb-item">Dashboard</li>
+                        <li class="breadcrumb-item active">Training Participation Portal</li>
+                    </ol>
                 </div>
-                <!-- Container-fluid Ends-->
             </div>
-            <!-- footer start-->
-
         </div>
     </div>
-    <!-- latest jquery-->
-    <script src="../assets/js/jquery.min.js"></script>
-    <!-- feather icon js-->
-    <script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-    <script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
-    <!-- scrollbar js-->
-    <script src="../assets/js/scrollbar/simplebar.min.js"></script>
-    <script src="../assets/js/scrollbar/custom.js"></script>
-    <!-- Sidebar jquery-->
-    <script src="../assets/js/config.js"></script>
-    <script src="../assets/js/modalpage/custom-modal.js"></script>
-    <!-- Plugins JS start-->
-    <script src="../assets/js/sidebar-menu.js"></script>
-    <script src="../assets/js/sidebar-pin.js"></script>
-    <script src="../assets/js/slick/slick.min.js"></script>
-    <script src="../assets/js/slick/slick.js"></script>
-    <script src="../assets/js/header-slick.js"></script>
-    <script src="../assets/js/editors/quill.js"></script>
-    <script src="../assets/js/custom-add-product3.js"></script>
-    <!-- tooltip JS Ends-->
-    <script src="../assets/js/tooltip-init.js"></script>
-    <!-- Plugins JS Ends--><!-- Theme js-->
-    <script src="../assets/js/script.js"></script>
-    <script src="../assets/js/script1.js"></script>
-    <script src="../assets/js/theme-customizer/customizer.js"></script>
-</body>
+    <div class="validation-forms">
 
-</html>
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="grid grid-cols-12 card-gap">
+                <div class="col-span-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Personal Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <form class="grid grid-cols-12 gap-3 needs-validation custom-input"
+                                action="{{ route('npc-training-form.store') }}" method="post" novalidate="">
+                                @csrf
+                                <div class="col-span-4 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip01">First
+                                        Name</label><input class="form-control" id="validationTooltip01" type="text"
+                                        placeholder="Mark" name="first_name" value="{{ old('first_name') }}" required />
+                                    @error('first_name')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-4 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip02">Middle
+                                        Name</label><input class="form-control" id="validationTooltip02" type="text"
+                                        placeholder="Otto" name="middle_name" value="{{ old('middle_name') }}" required />
+                                    @error('middle_name')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-4 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip02">Last
+                                        Name</label><input class="form-control" id="validationTooltip02" type="text"
+                                        placeholder="Otto" name="last_name" value="{{ old('last_name') }}" required />
+                                    @error('last_name')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-span-6 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip03">Council Registration
+                                        Number (NPC No.)</label><input class="form-control" id="validationTooltip03"
+                                        type="text" name="registration_number" required="" />
+                                    @error('registration_number')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-3 md:col-span-12 position-relative">
+                                    <label for="designation" class="form-label">Designation</label>
+                                    <select id="designation" name="designation"
+                                        class="form-select @error('designation') is-invalid @enderror" required>
+                                        <option value="">Select designation</option>
+                                        <option value="Pharmacist"
+                                            {{ old('designation') == 'Pharmacist' ? 'selected' : '' }}>Pharmacist</option>
+                                        <option value="Pharmacy Assistant"
+                                            {{ old('designation') == 'Pharmacy Assistant' ? 'selected' : '' }}>Pharmacy
+                                            Assistant</option>
+                                    </select>
+                                    @error('designation')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-3 md:col-span-12 position-relative">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <select id="gender" name="gender"
+                                        class="form-select @error('gender') is-invalid @enderror" required>
+                                        <option value="">Select gender</option>
+                                        <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male
+                                        </option>
+                                        <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female
+                                        </option>
+                                        <option value="Other" {{ old('gender') == 'Other' ? 'selected' : '' }}>Other
+                                        </option>
+                                    </select>
+                                    @error('gender')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-4 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip05">Date of
+                                        birth</label><input class="form-control" id="validationTooltip05" type="text"
+                                        name="dob" required="" />
+                                    @error('dob')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-4 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip05">Citizenship
+                                        Number</label><input class="form-control" id="validationTooltip05" type="text"
+                                        name="citizenship_number" required="" />
+                                    @error('citizenship_number')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-4 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip05">Issued
+                                        District</label><input class="form-control" id="validationTooltip05"
+                                        type="text" name="issued_district" required="" />
+                                    @error('issued_district')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-6 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip05">Email</label><input
+                                        class="form-control" id="validationTooltip05" type="text" name="email"
+                                        required="" />
+                                    @error('email')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-6 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip05">Contact
+                                        Number</label><input class="form-control" id="validationTooltip05" type="text"
+                                        required="" name="contact_number" />
+                                    @error('contact_number')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-span-12">
+                                    <h5>Educational Qualification </h5>
+                                </div>
+                                <div class="col-span-4 md:col-span-12 position-relative">
+                                    <label for="qualification" class="form-label">Qualification</label>
+                                    <select id="qualification" name="qualification"
+                                        class="form-select @error('qualification') is-invalid @enderror" required>
+                                        <option value="">Select qualification</option>
+                                        <option value="Degree" {{ old('qualification') == 'Degree' ? 'selected' : '' }}>
+                                            Degree</option>
+                                        <option value="Diploma" {{ old('qualification') == 'Diploma' ? 'selected' : '' }}>
+                                            Diploma</option>
+                                    </select>
+                                    @error('qualification')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-4 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip05">Institution
+                                        Attended</label><input class="form-control" id="validationTooltip05"
+                                        type="text" required="" name="institution_attended" />
+                                    @error('institution_attended')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+
+                                </div>
+                                <div class="col-span-4 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip05">Year of
+                                        Graduation</label><input class="form-control" id="validationTooltip05"
+                                        type="text" required="" name="year_of_graduation" />
+                                    @error('year_of_graduation')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-span-12">
+                                    <h5>Current Professional Activity </h5>
+                                </div>
+                                <div class="col-span-6 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip05">Current Workplace
+                                        Name</label><input class="form-control" id="validationTooltip05" type="text"
+                                        required="" name="workplace_name" />
+                                    @error('workplace_name')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-6 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip05">Workplace
+                                        Address</label><input class="form-control" id="validationTooltip05"
+                                        type="text" required="" name="workplace_address" />
+                                    @error('workplace_address')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+
+                                </div>
+                                <div class="col-span-6 md:col-span-12 position-relative">
+                                    <label class="form-label" for="validationTooltip05">Position/Designation</label><input
+                                        class="form-control" id="validationTooltip05" type="text" required=""
+                                        name="position" />
+                                    @error('position')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-6 md:col-span-12 position-relative">
+                                    <label for="employment_type" class="form-label">Employment Type</label>
+                                    <select id="employment_type" name="employment_type"
+                                        class="form-select @error('employment_type') is-invalid @enderror" required>
+                                        <option value="">Select employment type</option>
+                                        <option value="Full time"
+                                            {{ old('employment_type') == 'Full time' ? 'selected' : '' }}>Full time
+                                        </option>
+                                        <option value="Part time"
+                                            {{ old('employment_type') == 'Part time' ? 'selected' : '' }}>Part time
+                                        </option>
+                                        <option value="Volunteer"
+                                            {{ old('employment_type') == 'Volunteer' ? 'selected' : '' }}>Volunteer
+                                        </option>
+                                    </select>
+                                    @error('employment_type')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-12 md:col-span-12 position-relative">
+                                    <label for="major_roles_and_responsibility" class="form-label">Major Roles and
+                                        Responsibility</label>
+                                    <textarea id="major_roles_and_responsibility" name="major_roles_and_responsibility" rows="4"
+                                        class="form-control @error('major_roles_and_responsibility') is-invalid @enderror" required>{{ old('major_roles_and_responsibility') }}</textarea>
+                                    @error('major_roles_and_responsibility')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-span-12 md:col-span-12 position-relative">
+                                    <h4>Reason for Attending the GPP Training</h4>
+
+                                    <label class="form-label" for="validationTooltip05"> Please explain briefly why you
+                                        are participating in the GPP
+                                        training.</label>
+                                    <textarea id="reason_for_attending" name="reason_for_attending" rows="4"
+                                        class="form-control @error('reason_for_attending') is-invalid @enderror" required>{{ old('reason_for_attending') }}</textarea>
+                                    @error('reason_for_attending')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+
+                                <div class="col-span-12">
+                                    <h5>Declaration</h5>
+                                    I hereby declare that the information provided above is true, complete, and
+                                    correct to the best of my knowledge. I am aware that any false or misleading
+                                    information may result in disqualification from the training or future
+                                    regulatory actions by the Nepal Pharmacy Council. <br />
+
+                                    I am participating in this training to enhance my professional competency
+                                    and
+                                    improve the quality of pharmacy services I provide in line with Good
+                                    Pharmacy
+                                    Practice standards. <br />
+
+
+                                </div>
+                                <div class="col-span-6 md:col-span-12 position-relative">
+                                    <label for="declaration_date" class="form-label">Declaration Date</label>
+                                    <input id="declaration_date" name="declaration_date" type="date"
+                                        class="form-control @error('declaration_date') is-invalid @enderror"
+                                        value="{{ old('declaration_date') }}" required />
+                                    @error('declaration_date')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div><br />
+                                <div class="col-span-6 md:col-span-12 position-relative">
+                                    <label for="declaration_place" class="form-label">Declaration Place</label>
+                                    <input id="declaration_place" name="declaration_place" type="text"
+                                        placeholder="Place"
+                                        class="form-control @error('declaration_place') is-invalid @enderror"
+                                        value="{{ old('declaration_place') }}" required />
+                                    @error('declaration_place')
+                                        <div class="text-red-600 text-sm">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-span-12">
+                                    <button class="btn btn-primary text-white" type="submit">
+                                        Submit form
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Container-fluid Ends-->
+    </div>
+    <!-- footer start-->
+@endsection
