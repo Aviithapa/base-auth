@@ -3,7 +3,6 @@
 namespace App\Notifications\Auth;
 
 use App\Broadcasting\SmsChannel;
-use App\Services\Sms\SmsHandler;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -14,6 +13,7 @@ class RegistrationNotification extends Notification implements ShouldQueue
     use Queueable;
 
     protected $user;
+
     /**
      * Create a new notification instance.
      */
@@ -29,7 +29,7 @@ class RegistrationNotification extends Notification implements ShouldQueue
      */
     public function via(object $notifiable): array
     {
-        return [SmsChannel::class];
+        return ['mail', SmsChannel::class];
     }
 
     /**
@@ -37,9 +37,11 @@ class RegistrationNotification extends Notification implements ShouldQueue
      */
     public function toMail(object $notifiable): MailMessage
     {
-        return new MailMessage()->subject('Verify Your Account - Nepal Pharmacy Council')->view('emails.pages.registration_otp', [
-            'user' => $this->user,
-        ]);
+        return (new MailMessage)
+            ->subject('Verify Your Account - Nepal Pharmacy Council')
+            ->markdown('emails.pages.registration_otp', [
+                'user' => $this->user,
+            ]);
     }
 
     /**
@@ -58,7 +60,7 @@ class RegistrationNotification extends Notification implements ShouldQueue
     public function toArray(object $notifiable): array
     {
         return [
-                //
-            ];
+            //
+        ];
     }
 }
