@@ -20,7 +20,7 @@ class RegisterRequest extends FormRequest
                 'max:255',
                 'regex:/^[\pL\s\-\.]+$/u', // Only letters, spaces, hyphens, dots
             ],
-            'email' => ['required', 'email:rfc,dns,spoof', 'unique:users,email'],
+            'email' => ['required', 'email:rfc,dns', 'unique:users,email'],
             'phone' => ['nullable', 'regex:/^[0-9\-\+\s\(\)]+$/', 'unique:users,phone'],
             'password' => [
                 'required',
