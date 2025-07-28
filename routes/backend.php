@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\Portal\ApplicationController;
+use App\Http\Controllers\Portal\ApplicationsController;
 use App\Http\Controllers\Portal\DashboardController;
 use App\Http\Controllers\Portal\NpcTrainingFormController;
 use App\Http\Controllers\Portal\TrainingParticipationForm;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -21,6 +22,15 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
         'destroy' => 'training-form.destroy',
     ]);
 
+    Route::resource('/application', ApplicationController::class)->names([
+        'index' => 'application.index',
+        'create' => 'application.create',
+        'store' => 'application.store',
+        'show' => 'application.show',
+        'edit' => 'application.edit',
+        'update' => 'application.update',
+        'destroy' => 'application.destroy',
+    ]);
 });
 
 

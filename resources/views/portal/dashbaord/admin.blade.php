@@ -47,11 +47,9 @@
                             <div class="col-span-4 sm:col-span-12">
                                 <div class="card small-widget">
                                     <div class="card-body primary">
-                                        <span class="f-light">New Orders</span>
+                                        <span class="f-light">Total Training</span>
                                         <div class="flex items-end gap-1">
-                                            <h4 class="counter" data-target="2435">0</h4>
-                                            <span class="font-primary f-12 font-medium"><i
-                                                    class="icon-arrow-up"></i><span>+50%</span></span>
+                                            <h4 class="counter" data-target="{{ $totalTraining }}">{{ $totalTraining }}</h4>
                                         </div>
                                         <div class="bg-gradient">
                                             <svg class="stroke-icon svg-fill">

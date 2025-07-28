@@ -49,6 +49,14 @@
                                 <use href="../assets/svg/icon-sprite.svg#fill-email"></use>
                             </svg><span>Training Form</span></a>
                     </li>
+                    <li class="sidebar-list">
+                        <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link sidebar-title link-nav"
+                            href="{{ route('application.index') }}"><svg class="stroke-icon">
+                                <use href="../assets/svg/icon-sprite.svg#stroke-email"></use>
+                            </svg><svg class="fill-icon">
+                                <use href="../assets/svg/icon-sprite.svg#fill-email"></use>
+                            </svg><span>Applications</span></a>
+                    </li>
                 </ul>
             </div>
 
