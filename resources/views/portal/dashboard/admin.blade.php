@@ -33,11 +33,6 @@
                                     <h6 class="f-light">
                                         Welcome to the Nepal Pharmacy Council Training Participation Portal
                                     </h6>
-                                    <div class="e-common-button flex flex-wrap">
-                                        <a class="btn btn-primary text-white flex"
-                                            href="/dashboard/training-participation-form"><i data-feather="plus"></i>Apply
-                                            for training</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -62,11 +57,10 @@
                             <div class="col-span-4 sm:col-span-12">
                                 <div class="card small-widget">
                                     <div class="card-body warning">
-                                        <span class="f-light">New Customers</span>
+                                        <span class="f-light">New Users</span>
                                         <div class="flex items-end gap-1">
-                                            <h4 class="counter" data-target="2908">0</h4>
-                                            <span class="font-warning f-12 font-medium"><i
-                                                    class="icon-arrow-up"></i><span>+20%</span></span>
+                                            <h4 class="counter" data-target="{{ $userCount }}">{{ $userCount }}</h4>
+
                                         </div>
                                         <div class="bg-gradient">
                                             <svg class="stroke-icon svg-fill">
@@ -79,13 +73,13 @@
                             <div class="col-span-4 sm:col-span-12">
                                 <div class="card small-widget">
                                     <div class="card-body secondary">
-                                        <span class="f-light">Average Sale</span>
+                                        <span class="f-light">Unapproved Training Applications</span>
                                         <div class="flex items-end gap-1">
                                             <h4>
-                                                $<span class="counter" data-target="389">0</span>k
+                                                <span class="counter"
+                                                    data-target="{{ $applicationCount }}">{{ $applicationCount }}</span>
                                             </h4>
-                                            <span class="font-secondary f-12 font-medium"><i
-                                                    class="icon-arrow-down"></i><span>-10%</span></span>
+
                                         </div>
                                         <div class="bg-gradient">
                                             <svg class="stroke-icon svg-fill">
@@ -98,13 +92,13 @@
                             <div class="col-span-4 sm:col-span-12">
                                 <div class="card small-widget">
                                     <div class="card-body success">
-                                        <span class="f-light">Gross Profit</span>
+                                        <span class="f-light">Approved Training Applications</span>
                                         <div class="flex items-end gap-1">
                                             <h4>
-                                                $<span class="counter" data-target="3908">0</span>
+                                                <span class="counter"
+                                                    data-target="{{ $applicationCountApproved }}">{{ $applicationCountApproved }}</span>
                                             </h4>
-                                            <span class="font-success f-12 font-medium"><i
-                                                    class="icon-arrow-up"></i><span>+80%</span></span>
+
                                         </div>
                                         <div class="bg-gradient">
                                             <svg class="stroke-icon svg-fill">

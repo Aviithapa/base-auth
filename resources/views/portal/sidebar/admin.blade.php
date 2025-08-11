@@ -27,36 +27,49 @@
                             <span>Back</span><i class="fa-solid fa-angle-right ps-2" aria-hidden="true"></i>
                         </div>
                     </li>
-                    <li class="pin-title sidebar-main-title">
-                        <div>
-                            <h6>Pinned</h6>
-                        </div>
-                    </li>
-                    <li class="sidebar-main-title">
-                        <div>
-                            <h6 class="lan-1">General</h6>
-                        </div>
-                    </li>
+
                     <li class="sidebar-list">
-                        <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link sidebar-title"
-                            href="/dashboard"><span class="lan-3">Dashboard </span></a>
-                    </li>
-                    <li class="sidebar-list">
-                        <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('training-form.index') }}"><svg class="stroke-icon">
+                        <i class="fa-solid fa-thumbtack"></i>
+                        <a class="sidebar-link sidebar-title link-nav {{ request()->routeIs('dashboard') ? 'active' : '' }}"
+                            href="{{ route('dashboard') }}">
+                            <svg class="stroke-icon">
                                 <use href="../assets/svg/icon-sprite.svg#stroke-email"></use>
-                            </svg><svg class="fill-icon">
+                            </svg>
+                            <svg class="fill-icon">
                                 <use href="../assets/svg/icon-sprite.svg#fill-email"></use>
-                            </svg><span>Training Form</span></a>
+                            </svg>
+                            <span>Dashboard</span>
+                        </a>
                     </li>
+
                     <li class="sidebar-list">
-                        <i class="fa-solid fa-thumbtack"></i><a class="sidebar-link sidebar-title link-nav"
-                            href="{{ route('application.index') }}"><svg class="stroke-icon">
+                        <i class="fa-solid fa-thumbtack"></i>
+                        <a class="sidebar-link sidebar-title link-nav {{ request()->routeIs('training-form.*') ? 'active' : '' }}"
+                            href="{{ route('training-form.index') }}">
+                            <svg class="stroke-icon">
                                 <use href="../assets/svg/icon-sprite.svg#stroke-email"></use>
-                            </svg><svg class="fill-icon">
+                            </svg>
+                            <svg class="fill-icon">
                                 <use href="../assets/svg/icon-sprite.svg#fill-email"></use>
-                            </svg><span>Applications</span></a>
+                            </svg>
+                            <span>Training Form</span>
+                        </a>
                     </li>
+
+                    <li class="sidebar-list">
+                        <i class="fa-solid fa-thumbtack"></i>
+                        <a class="sidebar-link sidebar-title link-nav {{ request()->routeIs('application.*') ? 'active' : '' }}"
+                            href="{{ route('application.index') }}">
+                            <svg class="stroke-icon">
+                                <use href="../assets/svg/icon-sprite.svg#stroke-email"></use>
+                            </svg>
+                            <svg class="fill-icon">
+                                <use href="../assets/svg/icon-sprite.svg#fill-email"></use>
+                            </svg>
+                            <span>Applications</span>
+                        </a>
+                    </li>
+
                 </ul>
             </div>
 

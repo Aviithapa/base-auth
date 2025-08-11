@@ -47,8 +47,7 @@
                                                 <th>Email</th>
                                                 <th>Position</th>
                                                 <th>Applied At</th>
-                                                <th>Created By</th>
-                                                <th>Action</th>
+                                                <th>Training Form</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -70,27 +69,8 @@
                                                     <td>{{ $form->position }}</td>
 
                                                     <td>{{ $form->created_at->format('d M Y') }}</td>
-                                                    <td>{{ $form->creator->name ?? 'N/A' }}</td>
-                                                    <td>
-                                                        <!-- Edit Button -->
-                                                        <a href="{{ route('application.edit', $form->id) }}" class="me-1"
-                                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                                            <i data-feather="edit"></i>
-                                                        </a>
+                                                    <td>{{ $form->npcTrainingForm->name ?? 'N/A' }}</td>
 
-                                                        <!-- Delete Button -->
-                                                        <form action="{{ route('application.destroy', $form->id) }}"
-                                                            method="POST" style="display:inline-block;"
-                                                            onsubmit="return confirm('Are you sure you want to delete this form?');">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm btn-outline-danger"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Delete">
-                                                                <i data-feather="trash-2"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

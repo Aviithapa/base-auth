@@ -44,6 +44,7 @@
                                                 <th>Form End Date</th>
                                                 <th>Created At</th>
                                                 <th>Created By</th>
+                                                <th>Filled Applications</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -60,6 +61,7 @@
                                                     </td>
                                                     <td>{{ $form->created_at->format('d M Y') }}</td>
                                                     <td>{{ $form->creator->name ?? 'N/A' }}</td>
+                                                    <td>{{ $form->training_form_application_count }}</td>
                                                     <td>
                                                         <a href="{{ route('training-form.show', $form->id) }}"
                                                             class="btn btn-sm btn-outline-info" data-bs-toggle="tooltip"

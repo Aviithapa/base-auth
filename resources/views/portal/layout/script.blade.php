@@ -10,7 +10,6 @@
 <script src="{{ asset('assets/js/modalpage/custom-modal.js') }}"></script>
 <!-- Plugins JS start-->
 <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
-<script src="{{ asset('assets/js/sidebar-pin.js') }}"></script>
 <script src="{{ asset('assets/js/slick/slick.min.js') }}"></script>
 <script src="{{ asset('assets/js/slick/slick.js') }}"></script>
 <script src="{{ asset('assets/js/header-slick.js') }}"></script>
@@ -24,7 +23,5 @@
 <script src="{{ asset('assets/js/dashboard/dashboard_2.js') }}"></script>
 <!-- tooltip JS Ends-->
 <script src="{{ asset('assets/js/tooltip-init.js') }}"></script>
-<!-- Plugins JS Ends--><!-- Theme js-->
+
 <script src="{{ asset('assets/js/script.js') }}"></script>
-<script src="{{ asset('assets/js/script1.js') }}"></script>
-<script src="{{ asset('assets/js/theme-customizer/customizer.js') }}"></script>

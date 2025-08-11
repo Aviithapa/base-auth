@@ -4,7 +4,7 @@ namespace App\Http\Requests\NpcTrainingForm;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreNpcTrainingFormRequest extends FormRequest
+class UpdateNpcTrainingFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -40,8 +40,8 @@ class StoreNpcTrainingFormRequest extends FormRequest
             'declaration_date' => 'required|string',
             'declaration_place' => 'required|string',
             'npc_training_form_id' => 'required|exists:npc_training_forms,id',
-            'profile_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'certificate_front' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'profile_photo' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'certificate_front' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 }
