@@ -1,9 +1,11 @@
 <div class="sidebar-wrapper" data-sidebar-layout="stroke-svg">
     <div>
         <div class="logo-wrapper">
-            <a href="dashboard"><img class="max-w-full h-[50px] for-light" src="../assets/images/logo/logo.png"
-                    alt="" style="height: 50px;" /><img class="max-w-full h-auto for-dark"
-                    src="../assets/images/logo/logo_dark.png" alt="" /></a>
+            <a href="dashboard">
+                <img class="max-w-full h-[50px] for-light" src="{{ asset('assets/images/logo/logo.png') }}" alt=""
+                    style="height: 50px;" />
+                <img class="max-w-full h-auto for-dark" src="{{ asset('assets/images/logo/logo_dark.png') }}"
+                    alt="" /></a>
             <div class="back-btn"><i class="fa-solid fa-angle-left"></i></div>
             <div class="toggle-sidebar">
                 <i class="status_toggle middle sidebar-toggle" data-feather="grid">
@@ -11,7 +13,7 @@
             </div>
         </div>
         <div class="logo-icon-wrapper">
-            <a href="dashboard"><img class="max-w-full h-auto" src="../assets/images/logo/logo-icon.png"
+            <a href="#"><img class="max-w-full h-auto" src="{{ asset('assets/images/logo/logo-icon.png') }}"
                     alt="" /></a>
         </div>
         <nav class="sidebar-main">
@@ -21,8 +23,8 @@
             <div id="sidebar-menu">
                 <ul class="sidebar-links" id="simple-bar">
                     <li class="back-btn">
-                        <a href="/dashboard"><img class="max-w-full h-auto" src="../assets/images/logo/logo-icon.png"
-                                alt="" /></a>
+                        <a href="#"><img class="max-w-full h-auto"
+                                src="{{ asset('assets/images/logo/logo-icon.png') }}" alt="" /></a>
                         <div class="mobile-back text-end">
                             <span>Back</span><i class="fa-solid fa-angle-right ps-2" aria-hidden="true"></i>
                         </div>
@@ -33,10 +35,10 @@
                         <a class="sidebar-link sidebar-title link-nav {{ request()->routeIs('dashboard') ? 'active' : '' }}"
                             href="{{ route('dashboard') }}">
                             <svg class="stroke-icon">
-                                <use href="../assets/svg/icon-sprite.svg#stroke-email"></use>
+                                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-email') }}"></use>
                             </svg>
                             <svg class="fill-icon">
-                                <use href="../assets/svg/icon-sprite.svg#fill-email"></use>
+                                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-email') }}"></use>
                             </svg>
                             <span>Dashboard</span>
                         </a>
@@ -47,10 +49,10 @@
                         <a class="sidebar-link sidebar-title link-nav {{ request()->routeIs('training-form.*') ? 'active' : '' }}"
                             href="{{ route('training-form.index') }}">
                             <svg class="stroke-icon">
-                                <use href="../assets/svg/icon-sprite.svg#stroke-email"></use>
+                                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-email') }}"></use>
                             </svg>
                             <svg class="fill-icon">
-                                <use href="../assets/svg/icon-sprite.svg#fill-email"></use>
+                                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-email') }}"></use>
                             </svg>
                             <span>Training Form</span>
                         </a>
@@ -61,10 +63,10 @@
                         <a class="sidebar-link sidebar-title link-nav {{ request()->routeIs('application.*') ? 'active' : '' }}"
                             href="{{ route('application.index') }}">
                             <svg class="stroke-icon">
-                                <use href="../assets/svg/icon-sprite.svg#stroke-email"></use>
+                                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-email') }}"></use>
                             </svg>
                             <svg class="fill-icon">
-                                <use href="../assets/svg/icon-sprite.svg#fill-email"></use>
+                                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-email') }}"></use>
                             </svg>
                             <span>Applications</span>
                         </a>

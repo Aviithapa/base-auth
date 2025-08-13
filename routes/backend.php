@@ -3,7 +3,6 @@
 use App\Http\Controllers\Portal\Admin\NpcTrainingFormController;
 use App\Http\Controllers\Portal\ApplicationController;
 use App\Http\Controllers\Portal\DashboardController;
-use App\Http\Controllers\Portal\TrainingParticipationForm;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])
@@ -20,5 +19,4 @@ Route::middleware(['auth'])
             Route::post('/training-form/{id}/reject', [NpcTrainingFormController::class, 'reject'])->name('training-form.reject');
         });
 
-        Route::get('/training-participation-form', [TrainingParticipationForm::class, 'index'])->name('training.participation.form');
     });

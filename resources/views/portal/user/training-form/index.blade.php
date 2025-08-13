@@ -65,10 +65,12 @@
                                                     </a>
                                                 @endif
 
-                                                <a class="btn {{ $form->trainingFormApplication->isNotEmpty() ? 'btn-success' : 'btn-info' }} text-white"
-                                                    href="{{ route('user.training-form.show', ['training_form' => $form->id]) }}">
-                                                    Show
-                                                </a>
+                                                @if ($form->trainingFormApplication->isNotEmpty())
+                                                    <a class="btn {{ $form->trainingFormApplication->isNotEmpty() ? 'btn-success' : 'btn-info' }} text-white"
+                                                        href="{{ route('user.training-form.show', ['training_form' => $form->id]) }}">
+                                                        Show
+                                                    </a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

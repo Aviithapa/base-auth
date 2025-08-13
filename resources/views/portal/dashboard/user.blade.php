@@ -11,7 +11,7 @@
                     <ol class="breadcrumb flex gap-2">
                         <li class="breadcrumb-item">
                             <a href="index.html"><svg class="stroke-icon">
-                                    <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
+                                    <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
                                 </svg></a>
                         </li>
                         <li class="breadcrumb-item">Dashboard</li>
@@ -34,9 +34,10 @@
                                         Welcome to the Nepal Pharmacy Council Training Participation Portal
                                     </h6>
                                     <div class="e-common-button flex flex-wrap">
-                                        <a class="btn btn-primary text-white flex" href="dashboard/user/training-form"><i
-                                                data-feather="plus"></i>Apply
-                                            for training</a>
+                                        <a class="btn btn-primary text-white flex"
+                                            href="{{ route('user.training-form.index') }}"><i data-feather="eye"></i>Show
+                                            trainings</a>
+
                                     </div>
                                 </div>
                             </div>

@@ -25,7 +25,6 @@
                         <div class="card heading-space">
                             <div class="card-header card-no-border">
                                 <div class="header-top" style="height: 20px;">
-                                    <h5></h5>
                                     <div class="card-header-right-icon">
                                         <div class="dropdown icon-dropdown">
 
@@ -64,8 +63,8 @@
                                                     <td>{{ $form->training_form_application_count }}</td>
                                                     <td>
                                                         <a href="{{ route('training-form.show', $form->id) }}"
-                                                            class="btn btn-sm btn-outline-info" data-bs-toggle="tooltip"
-                                                            data-bs-placement="top" title="View">
+                                                            class="me-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="View">
                                                             <i data-feather="eye"></i>
                                                         </a>
                                                         <!-- Edit Button -->

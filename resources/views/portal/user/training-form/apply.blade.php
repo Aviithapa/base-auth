@@ -52,7 +52,7 @@
                                     @if (isset($formApplication) && $formApplication->hasMedia('profile_photo'))
                                         <div class="mb-3">
                                             <img src="{{ $formApplication->getFirstMediaUrl('profile_photo') }}"
-                                                alt="Profile Photo" class="img-thumbnail" style="max-width: 200px;">
+                                                alt="Profile" class="img-thumbnail" style="max-width: 200px;">
                                         </div>
                                     @endif
                                     <input type="file" name="profile_photo" class="form-control"

@@ -82,13 +82,15 @@ class TrainingFormController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\View\View
      */
-    public function show($id): View
+    public function show($id)
     {
         $trainingForm = NpcTrainingForm::findOrFail($id);
         $profile = $this->user->profile;
         $formApplication = NpcTrainingFormApplication::where('npc_training_form_id', $id)->where('user_id', $this->user->id)->first();
+        if (!$formApplication) {
+            return redirect()->route('user.training-form.index');
+        }
         return view('portal.user.training-form.show', compact('trainingForm', 'profile', 'formApplication'));
     }
 

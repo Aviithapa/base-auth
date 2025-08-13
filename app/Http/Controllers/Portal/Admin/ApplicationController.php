@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Portal;
 
 use App\Http\Controllers\Controller;
-use App\Models\NpcTrainingForm;
 use App\Models\NpcTrainingFormApplication;
-use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
 {
