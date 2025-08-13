@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Portal\Admin\NpcTrainingFormController;
-use App\Http\Controllers\Portal\ApplicationController;
+use App\Http\Controllers\Portal\Admin\ApplicationController;
 use App\Http\Controllers\Portal\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +17,7 @@ Route::middleware(['auth'])
             Route::delete('/training-form/document/{media}', [NpcTrainingFormController::class, 'deleteDocument'])->name('training-form.document.delete');
             Route::post('/training-form/{id}/approve', [NpcTrainingFormController::class, 'approve'])->name('training-form.approve');
             Route::post('/training-form/{id}/reject', [NpcTrainingFormController::class, 'reject'])->name('training-form.reject');
+            Route::get('/training-forms/{id}/download/{user_id}', [NpcTrainingFormController::class, 'downloadPdf'])->name('training-forms.download');
         });
 
     });

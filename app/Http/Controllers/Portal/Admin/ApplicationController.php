@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Portal;
+namespace App\Http\Controllers\Portal\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\NpcTrainingFormApplication;

@@ -63,8 +63,8 @@
                                                     <td>{{ $form->training_form_application_count }}</td>
                                                     <td>
                                                         <a href="{{ route('training-form.show', $form->id) }}"
-                                                            class="me-1" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            title="View">
+                                                            class="btn me-1" data-bs-toggle="tooltip"
+                                                            data-bs-placement="top" title="View">
                                                             <i data-feather="eye"></i>
                                                         </a>
                                                         <!-- Edit Button -->

@@ -6,6 +6,7 @@ use App\Exports\Admin\BulkTrainingApplicantsExport;
 use App\Http\Controllers\Controller;
 use App\Models\NpcTrainingForm;
 use App\Models\NpcTrainingFormApplication;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -107,5 +108,18 @@ class NpcTrainingFormController extends Controller
         $trainingForm = NpcTrainingForm::with('trainingFormApplication')->findOrFail($id);
 
         return Excel::download(new BulkTrainingApplicantsExport($trainingForm), 'training_applicants.xlsx');
+    }
+
+    public function downloadPdf($id, $user_id)
+    {
+        $trainingForm = NpcTrainingForm::findOrFail($id);
+
+        $formApplication = NpcTrainingFormApplication::where('npc_training_form_id', $id)
+            ->where('user_id', $user_id)
+            ->firstOrFail();
+
+        $pdf = Pdf::loadView('pdf.user-details', compact('trainingForm', 'formApplication'))->setPaper('a4', 'portrait');
+
+        return $pdf->download('training-form-' . $id . '.pdf');
     }
 }

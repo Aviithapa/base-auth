@@ -102,23 +102,35 @@
                                                     <tr>
                                                         <td>{{ $loopIndex }}</td>
                                                         <td>
-                                                            <form action="{{ route('training-form.approve', $form->id) }}"
-                                                                method="POST" style="display:inline;">
-                                                                @csrf
-                                                                <button class="btn btn-success btn-sm" type="submit"
-                                                                    onclick="return confirm('Approve this application?')">
-                                                                    Approve
-                                                                </button>
-                                                            </form>
+                                                            @if ($form->status === 'approved')
+                                                                <a href="{{ route('training-forms.download', ['id' => $trainingForm->id, 'user_id' => $form->user_id]) }}"
+                                                                    class="me-1" data-bs-toggle="tooltip"
+                                                                    data-bs-placement="top" title="View">
+                                                                    <i data-feather="download"></i>
+                                                                </a>
+                                                            @else
+                                                                <form
+                                                                    action="{{ route('training-form.approve', $form->id) }}"
+                                                                    method="POST" style="display:inline;">
+                                                                    @csrf
+                                                                    <button class="btn btn-success btn-sm text-white"
+                                                                        type="submit"
+                                                                        onclick="return confirm('Approve this application?')">
+                                                                        Approve
+                                                                    </button>
+                                                                </form>
 
-                                                            <form action="{{ route('training-form.reject', $form->id) }}"
-                                                                method="POST" style="display:inline;">
-                                                                @csrf
-                                                                <button class="btn btn-danger btn-sm" type="submit"
-                                                                    onclick="return confirm('Reject this application?')">
-                                                                    Reject
-                                                                </button>
-                                                            </form>
+                                                                <form
+                                                                    action="{{ route('training-form.reject', $form->id) }}"
+                                                                    method="POST" style="display:inline;">
+                                                                    @csrf
+                                                                    <button class="btn btn-danger btn-sm text-white"
+                                                                        type="submit"
+                                                                        onclick="return confirm('Reject this application?')">
+                                                                        Reject
+                                                                    </button>
+                                                                </form>
+                                                            @endif
                                                         </td>
 
                                                         <td>{{ $form->first_name, ' ', $form->middle_name, ' ', $form->last_name }}
