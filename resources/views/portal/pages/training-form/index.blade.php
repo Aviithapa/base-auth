@@ -88,12 +88,13 @@
                                     No training forms available.
                                 </div>
                             @endforelse
-
                         </div>
+
                     </div>
                 </div>
-
             </div>
+
         </div>
-        <!-- footer start-->
-    @endsection
+    </div>
+    <!-- footer start-->
+@endsection
