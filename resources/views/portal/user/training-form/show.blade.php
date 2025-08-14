@@ -74,12 +74,64 @@
                             <td class="px-4 py-2">{{ $formApplication->dob ?? '-' }}</td>
                         </tr>
                         <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Citizenship Number</th>
+                            <td class="px-4 py-2">{{ $formApplication->citizenship_number ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Issued District</th>
+                            <td class="px-4 py-2">{{ $formApplication->issued_district ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
                             <th class="px-4 py-2 font-medium">Email</th>
                             <td class="px-4 py-2">{{ $formApplication->email ?? '-' }}</td>
                         </tr>
                         <tr class="border border-gray-200">
                             <th class="px-4 py-2 font-medium">Contact Number</th>
                             <td class="px-4 py-2">{{ $formApplication->contact_number ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Qualification</th>
+                            <td class="px-4 py-2">{{ $formApplication->qualification ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Institution Attended</th>
+                            <td class="px-4 py-2">{{ $formApplication->institution_attended ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Year of Graduation</th>
+                            <td class="px-4 py-2">{{ $formApplication->graduation_year ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Current Workplace</th>
+                            <td class="px-4 py-2">{{ $formApplication->workplace_name ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Workplace Address</th>
+                            <td class="px-4 py-2">{{ $formApplication->workplace_address ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Position</th>
+                            <td class="px-4 py-2">{{ $formApplication->position ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Employment Type</th>
+                            <td class="px-4 py-2">{{ $formApplication->employment_type ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Major Roles and Responsibilities</th>
+                            <td class="px-4 py-2">{{ $formApplication->roles ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Reason for attending</th>
+                            <td class="px-4 py-2">{{ $formApplication->training_reason ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Declaration Date</th>
+                            <td class="px-4 py-2">{{ $formApplication->declaration_date ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Declaration Place</th>
+                            <td class="px-4 py-2">{{ $formApplication->declaration_place ?? '-' }}</td>
                         </tr>
                         <tr class="border border-gray-200">
                             <th class="px-4 py-2 font-medium">Photo</th>
@@ -133,8 +185,9 @@
                                             style="max-height: 120px; object-fit: contain;" />
                                     @elseif ($ext === 'pdf')
                                         {{-- PDF Icon --}}
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="mb-2" width="64" height="64"
-                                            fill="currentColor" viewBox="0 0 24 24" style="color: #dc3545;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="mb-2" width="64"
+                                            height="64" fill="currentColor" viewBox="0 0 24 24"
+                                            style="color: #dc3545;">
                                             <path
                                                 d="M19 2H9a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7l-5-5zM9 20V4h7v5h5v11H9z" />
                                             <text x="7" y="18" font-size="8" fill="currentColor"
@@ -142,8 +195,9 @@
                                         </svg>
                                     @else
                                         {{-- Generic file icon --}}
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="mb-2" width="64" height="64"
-                                            fill="currentColor" viewBox="0 0 24 24" style="color: #6c757d;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="mb-2" width="64"
+                                            height="64" fill="currentColor" viewBox="0 0 24 24"
+                                            style="color: #6c757d;">
                                             <path
                                                 d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 3.5L19.5 9H14z" />
                                         </svg>

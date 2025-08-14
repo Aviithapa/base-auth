@@ -36,4 +36,32 @@ class NpcTrainingForm extends Model implements HasMedia
     {
         return $this->hasMany(NpcTrainingFormApplication::class);
     }
+
+     public function latestApplication() {
+        return $this->trainingFormApplication()
+                    ->where('user_id', Auth::id()) // filter by current user
+                    ->latest()
+                    ->first();
+    }
+
+
+    public function isRejected() {
+        $app = $this->latestApplication();
+        return $app && $app->status === 'rejected';
+    }
+
+    public function isApproved() {
+        $app = $this->latestApplication();
+        return $app && $app->status === 'approved';
+    }
+
+    public function isPending() {
+        $app = $this->latestApplication();
+        return $app && $app->status === 'pending';
+    }
+
+    public function remarks() {
+        $app = $this->latestApplication();
+        return $app ? $app->remarks : null;
+    }
 }

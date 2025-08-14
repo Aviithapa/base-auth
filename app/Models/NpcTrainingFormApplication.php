@@ -35,5 +35,8 @@ class NpcTrainingFormApplication extends Model implements HasMedia
         return $this->belongsTo(NpcTrainingForm::class, 'npc_training_form_id');
     }
 
-
+    public function getFullName()
+    {
+        return trim($this->first_name . ' ' . $this->middle_name . ' ' . $this->last_name);
+    }
 }

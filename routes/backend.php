@@ -18,6 +18,7 @@ Route::middleware(['auth'])
             Route::post('/training-form/{id}/approve', [NpcTrainingFormController::class, 'approve'])->name('training-form.approve');
             Route::post('/training-form/{id}/reject', [NpcTrainingFormController::class, 'reject'])->name('training-form.reject');
             Route::get('/training-forms/{id}/download/{user_id}', [NpcTrainingFormController::class, 'downloadPdf'])->name('training-forms.download');
+            Route::get('/training-forms/{id}/certificate/{user_id}', [NpcTrainingFormController::class, 'downloadCertificate'])->name('training-forms.certificate');
         });
 
     });

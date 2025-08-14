@@ -108,12 +108,64 @@
                             <td class="px-4 py-2">{{ $formApplication->dob ?? '-' }}</td>
                         </tr>
                         <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Citizenship Number</th>
+                            <td class="px-4 py-2">{{ $formApplication->citizenship_number ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Issued District</th>
+                            <td class="px-4 py-2">{{ $formApplication->issued_district ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
                             <th class="px-4 py-2 font-medium">Email</th>
                             <td class="px-4 py-2">{{ $formApplication->email ?? '-' }}</td>
                         </tr>
                         <tr class="border border-gray-200">
                             <th class="px-4 py-2 font-medium">Contact Number</th>
                             <td class="px-4 py-2">{{ $formApplication->contact_number ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Qualification</th>
+                            <td class="px-4 py-2">{{ $formApplication->qualification ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Institution Attended</th>
+                            <td class="px-4 py-2">{{ $formApplication->institution_attended ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Year of Graduation</th>
+                            <td class="px-4 py-2">{{ $formApplication->graduation_year ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Current Workplace</th>
+                            <td class="px-4 py-2">{{ $formApplication->workplace_name ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Workplace Address</th>
+                            <td class="px-4 py-2">{{ $formApplication->workplace_address ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Position</th>
+                            <td class="px-4 py-2">{{ $formApplication->position ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Employment Type</th>
+                            <td class="px-4 py-2">{{ $formApplication->employment_type ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Major Roles and Responsibilities</th>
+                            <td class="px-4 py-2">{{ $formApplication->roles ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Reason for attending</th>
+                            <td class="px-4 py-2">{{ $formApplication->training_reason ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Declaration Date</th>
+                            <td class="px-4 py-2">{{ $formApplication->declaration_date ?? '-' }}</td>
+                        </tr>
+                        <tr class="border border-gray-200">
+                            <th class="px-4 py-2 font-medium">Declaration Place</th>
+                            <td class="px-4 py-2">{{ $formApplication->declaration_place ?? '-' }}</td>
                         </tr>
                         <tr class="border border-gray-200">
                             <th class="px-4 py-2 font-medium">Photo</th>

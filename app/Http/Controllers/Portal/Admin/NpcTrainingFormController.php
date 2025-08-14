@@ -11,6 +11,7 @@ use App\Notifications\Application\RejectApplicationNotification;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class NpcTrainingFormController extends Controller
@@ -26,11 +27,34 @@ class NpcTrainingFormController extends Controller
         return view('portal.pages.training-form.form');
     }
 
-    public function show($id)
-    {
-        $trainingForm = NpcTrainingForm::with('creator')->findOrFail($id);
-        return view('portal.pages.training-form.show', compact('trainingForm'));
+    public function show($id, Request $request)
+{
+    $status = $request->get('status', 'pending');
+
+    // Load the form with its creator and applications
+    $trainingForm = NpcTrainingForm::with('creator')->findOrFail($id);
+
+    // Start query on applications
+    $applicationsQuery = $trainingForm->trainingFormApplication();
+
+    // Apply status filter if requested
+    if ($status) {
+        $applicationsQuery->where('npc_training_form_applications.status', $status);
     }
+
+    // Get filtered applications
+    $applications = $applicationsQuery->get();
+
+    // Get counts for all statuses
+    $counts = [
+        'pending' => $trainingForm->trainingFormApplication()->where('status', 'pending')->count(),
+        'approved' => $trainingForm->trainingFormApplication()->where('status', 'approved')->count(),
+        'rejected' => $trainingForm->trainingFormApplication()->where('status', 'rejected')->count(),
+    ];
+
+    return view('portal.pages.training-form.show', compact('trainingForm', 'applications', 'counts', 'status'));
+}
+
 
     public function store(Request $request)
     {
@@ -98,7 +122,6 @@ class NpcTrainingFormController extends Controller
 
     public function reject(Request $request, $id)
     {
-
         $application = NpcTrainingFormApplication::findOrFail($id);
         $application->status = 'rejected';
         $application->remarks = $request->input('remarks');
@@ -121,12 +144,25 @@ class NpcTrainingFormController extends Controller
     {
         $trainingForm = NpcTrainingForm::findOrFail($id);
 
-        $formApplication = NpcTrainingFormApplication::where('npc_training_form_id', $id)
-            ->where('user_id', $user_id)
-            ->firstOrFail();
+        $formApplication = NpcTrainingFormApplication::where('npc_training_form_id', $id)->where('user_id', $user_id)->firstOrFail();
 
         $pdf = Pdf::loadView('pdf.user-details', compact('trainingForm', 'formApplication'))->setPaper('a4', 'portrait');
 
         return $pdf->download('training-form-' . $id . '.pdf');
     }
+
+    public function downloadCertificate($id, $user_id)
+    {
+        $trainingForm = NpcTrainingForm::findOrFail($id);
+
+        $formApplication = NpcTrainingFormApplication::where('npc_training_form_id', $id)->where('user_id', $user_id)->firstOrFail();
+        $url = url('http://tranning.nepalpharmacycouncil.com/');
+        $qrCode = QrCode::size(100)->generate($url);
+           $qrCodeBase64 = 'data:image/png;base64,' . base64_encode($qrCode);
+
+        $pdf = Pdf::loadView('pdf.certificate', compact('trainingForm', 'formApplication', 'qrCodeBase64'))->setPaper('a4', 'landscape');
+
+        return $pdf->download('certificate-' . $id . '.pdf');
+    }
+
 }

@@ -115,6 +115,10 @@ class TrainingFormController extends Controller
             $data = $request->validated();
 
             $form = NpcTrainingFormApplication::findOrFail($id);
+            if ($form->status === 'rejected') {
+                $form->status = 'pending';
+            }
+
             $form->update($data);
 
             if ($request->hasFile('profile_photo')) {
