@@ -4,10 +4,11 @@ namespace App\Notifications\Auth;
 
 use App\Broadcasting\SmsChannel;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class RegistrationNotification extends Notification
+class RegistrationNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
