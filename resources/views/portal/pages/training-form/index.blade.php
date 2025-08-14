@@ -22,83 +22,78 @@
                         </div>
                     </div>
                     <div class="col-span-12 xxl:col-span-12 box-col-12 ord-xl-iii box-ord-3">
-                        <div class="card heading-space">
-                            <div class="card-header card-no-border">
-                                <div class="header-top" style="height: 20px;">
-                                    <div class="card-header-right-icon">
-                                        <div class="dropdown icon-dropdown">
+                        <div class="grid grid-cols-12 card-gap heading-space">
 
+                            @forelse ($forms as $form)
+                                <div class="col-span-4 xl:col-span-6 sm:col-span-12">
+                                    <div class="card">
+                                        <div
+                                            class="card-header {{ $form->trainingFormApplication->isNotEmpty() ? 'bg-success' : 'bg-info' }}">
+                                            <h5 class="txt-light">
+                                                {{ $form->name }}
+
+                                            </h5>
                                         </div>
+                                        <div class="card-body">
+                                            <p class="mb-0 c-light">
+                                            <div class="text-sm text-gray-600 space-y-1">
+                                                <p>
+                                                    <span class="font-medium text-gray-700">Training Start:</span>
+                                                    {{ \Carbon\Carbon::parse($form->training_start_date)->format('d M Y') }}
+                                                </p>
+                                                <p>
+                                                    <span class="font-medium text-gray-700">Form End:</span>
+                                                    {{ \Carbon\Carbon::parse($form->form_end_date)->format('d M Y') }}
+                                                </p>
+                                                <p>
+                                                    <span class="font-medium text-gray-700">Created At:</span>
+                                                    {{ $form->created_at->format('d M Y') }}
+                                                </p>
+                                                <p>
+                                                    <span class="font-medium text-gray-700">Organized By:</span>
+                                                    Nepal Pharmacy Council
+                                                </p>
+                                                <p class="card-text mb-2"><strong>Filled Applications:</strong>
+                                                    {{ $form->training_form_application_count }}</p>
+
+                                            </div>
+                                            </p>
+                                        </div>
+                                        <div class="card-footer d-flex justify-content-between align-items-center"
+                                            style="display: flex; justify-content: space-between; align-items: center;">
+                                            <a href="{{ route('training-form.show', $form->id) }}" data-bs-toggle="tooltip"
+                                                data-bs-placement="top" title="View">
+                                                <i data-feather="eye"></i>
+                                            </a>
+                                            <a href="{{ route('training-form.edit', $form->id) }}" data-bs-toggle="tooltip"
+                                                data-bs-placement="top" title="Edit">
+                                                <i data-feather="edit"></i>
+                                            </a>
+                                            <form action="{{ route('training-form.destroy', $form->id) }}" method="POST"
+                                                style="display:inline-block;"
+                                                onsubmit="return confirm('Are you sure you want to delete this form?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-outline-danger"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                                    <i data-feather="trash-2"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-body px-0 pt-0 training-form">
-                                <div class="training-form-table overflow-x-auto custom-scrollbar">
-                                    <table class="table" id="training-form">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Form Name</th>
-                                                <th>Training Start Date</th>
-                                                <th>Form End Date</th>
-                                                <th>Created At</th>
-                                                <th>Created By</th>
-                                                <th>Filled Applications</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($forms as $form)
-                                                @php $loopIndex = $loop->iteration; @endphp
-
-                                                <tr>
-                                                    <td>{{ $loopIndex }}</td>
-                                                    <td>{{ $form->name }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($form->training_start_date)->format('d M Y') }}
-                                                    </td>
-                                                    <td>{{ \Carbon\Carbon::parse($form->form_end_date)->format('d M Y') }}
-                                                    </td>
-                                                    <td>{{ $form->created_at->format('d M Y') }}</td>
-                                                    <td>{{ $form->creator->name ?? 'N/A' }}</td>
-                                                    <td>{{ $form->training_form_application_count }}</td>
-                                                    <td>
-                                                        <a href="{{ route('training-form.show', $form->id) }}"
-                                                            class="btn me-1" data-bs-toggle="tooltip"
-                                                            data-bs-placement="top" title="View">
-                                                            <i data-feather="eye"></i>
-                                                        </a>
-                                                        <!-- Edit Button -->
-                                                        <a href="{{ route('training-form.edit', $form->id) }}"
-                                                            class="me-1" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            title="Edit">
-                                                            <i data-feather="edit"></i>
-                                                        </a>
-
-                                                        <!-- Delete Button -->
-                                                        <form action="{{ route('training-form.destroy', $form->id) }}"
-                                                            method="POST" style="display:inline-block;"
-                                                            onsubmit="return confirm('Are you sure you want to delete this form?');">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm btn-outline-danger"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Delete">
-                                                                <i data-feather="trash-2"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                            @empty
+                                <div class="col-span-12 text-center text-gray-500 py-10">
+                                    No training forms available.
                                 </div>
-                            </div>
+                            @endforelse
+
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
-    <!-- footer start-->
-@endsection
+        <!-- footer start-->
+    @endsection
