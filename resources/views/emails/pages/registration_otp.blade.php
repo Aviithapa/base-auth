@@ -47,8 +47,7 @@
                 <table style="margin: 0 auto 30px">
                     <tr>
                         <td>
-                            <img src="{{ asset('assets/images/other-images/logo-login.png') }}" alt="Logo"
-                                style="height: 40px;" />
+                            <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo" style="height: 40px;" />
                         </td>
                         <td style="text-align: right; color: #999;">
                             <span>Registration Confirmation</span>
@@ -78,7 +77,7 @@
                                 Kathmandu, Nepal
                             </p>
                             <p style="color: #999; margin-bottom: 0;">
-                                Powered By <a href="#" style="color: #7366ff;">NPC Tech</a>
+                                Powered By <a href="#" style="color: #7366ff;">Nepal Pharmacy Council</a>
                             </p>
                         </td>
                     </tr>

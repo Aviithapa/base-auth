@@ -6,6 +6,8 @@ use App\Exports\Admin\BulkTrainingApplicantsExport;
 use App\Http\Controllers\Controller;
 use App\Models\NpcTrainingForm;
 use App\Models\NpcTrainingFormApplication;
+use App\Models\User;
+use App\Notifications\Application\RejectApplicationNotification;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -94,13 +96,18 @@ class NpcTrainingFormController extends Controller
         return back()->with('success', 'Application approved successfully.');
     }
 
-    public function reject($id)
+    public function reject(Request $request, $id)
     {
+
         $application = NpcTrainingFormApplication::findOrFail($id);
         $application->status = 'rejected';
+        $application->remarks = $request->input('remarks');
         $application->save();
+        $user = User::findOrFail($application->user_id);
 
-        return back()->with('error', 'Application rejected.');
+        $user->notify(new RejectApplicationNotification($user, $application->remarks));
+
+        return redirect()->back()->with('error', 'Application rejected.');
     }
 
     public function exportApplicants($id)

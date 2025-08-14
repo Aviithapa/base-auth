@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reset Password</title>
+    <title>Registration Confirmation</title>
     <style>
         body {
             width: 650px;
@@ -48,28 +48,32 @@
                     <tr>
                         <td>
                             <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo" style="height: 40px;" />
+
                         </td>
                         <td style="text-align: right; color: #999;">
-                            <span>Forgot Password</span>
+                            <span>Application Rejected</span>
                         </td>
                     </tr>
                 </table>
 
-                <table style="margin: 0 auto; background-color: #fff; border-radius: 8px;">
+                <table
+                    style="margin: 0 auto; background-color: #fff; border-radius: 8px; width: 100%; max-width: 600px;">
                     <tr>
-                        <td style="padding: 30px;">
-                            <h6>Hello {{ $user->name }},</h6>
-                            <p>Welcome to Nepal Pharmacy Council. To reset your password, please use the OTP code
-                                below:</p>
-                            <p class="text-center" style="font-size: 22px; font-weight: bold; margin: 20px 0;">
-                                {{ $user->phone_otp }}</p>
-                            <p>This code is valid for 10 minutes. If you did not request this, please ignore this
-                                message.</p>
-                            <p style="margin-top: 20px;">Thank you,<br> Nepal Pharmacy Council</p>
+                        <td style="padding: 30px; font-family: Arial, sans-serif; color: #333;">
+                            <h4>Hello {{ $user->name }},</h4>
+                            <p>We regret to inform you that your training application has been <strong
+                                    style="color: red;">rejected</strong>.</p>
+
+                            <p><strong>Reason for rejection:</strong></p>
+                            <blockquote style="border-left: 4px solid #ccc; padding-left: 10px; color: #555;">
+                                {{ $remarks }}
+                            </blockquote>
+
+                            <p style="margin-top: 20px;">Thank you,<br>
+                                Nepal Pharmacy Council</p>
                         </td>
                     </tr>
                 </table>
-
                 @include('emails.layouts.footer')
             </td>
         </tr>

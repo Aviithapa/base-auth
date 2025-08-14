@@ -109,6 +109,7 @@
                                                                     <i data-feather="download"></i>
                                                                 </a>
                                                             @else
+                                                                {{-- Approve Button --}}
                                                                 <form
                                                                     action="{{ route('training-form.approve', $form->id) }}"
                                                                     method="POST" style="display:inline;">
@@ -120,16 +121,49 @@
                                                                     </button>
                                                                 </form>
 
-                                                                <form
-                                                                    action="{{ route('training-form.reject', $form->id) }}"
-                                                                    method="POST" style="display:inline;">
-                                                                    @csrf
-                                                                    <button class="btn btn-danger btn-sm text-white"
-                                                                        type="submit"
-                                                                        onclick="return confirm('Reject this application?')">
-                                                                        Reject
-                                                                    </button>
-                                                                </form>
+                                                                {{-- Reject Button (Opens Modal) --}}
+                                                                <button type="button"
+                                                                    class="btn btn-danger btn-sm text-white"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#rejectModal{{ $form->id }}">
+                                                                    Reject
+                                                                </button>
+
+                                                                {{-- Reject Modal --}}
+                                                                <div class="modal fade" id="rejectModal{{ $form->id }}"
+                                                                    tabindex="-1"
+                                                                    aria-labelledby="rejectModalLabel{{ $form->id }}"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <form
+                                                                            action="{{ route('training-form.reject', $form->id) }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="rejectModalLabel{{ $form->id }}">
+                                                                                        Reject Application</h5>
+                                                                                    <button type="button" class="btn-close"
+                                                                                        data-bs-dismiss="modal"></button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <label for="remarks{{ $form->id }}"
+                                                                                        class="form-label">Remarks</label>
+                                                                                    <textarea name="remarks" id="remarks{{ $form->id }}" class="form-control" rows="3"
+                                                                                        placeholder="Enter reason for rejection" required></textarea>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Cancel</button>
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-danger">Reject</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
                                                             @endif
                                                         </td>
 

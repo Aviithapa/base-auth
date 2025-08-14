@@ -12,7 +12,7 @@ class NpcTrainingFormApplication extends Model implements HasMedia
 {
     use SoftDeletes, InteractsWithMedia;
 
-    protected $fillable = ['first_name', 'middle_name', 'status', 'last_name', 'registration_number', 'designation', 'gender', 'dob', 'citizenship_number', 'issued_district', 'email', 'contact_number', 'qualification', 'institution_attended', 'graduation_year', 'workplace_name', 'workplace_address', 'position', 'employment_type', 'roles', 'training_reason', 'declaration_date', 'declaration_place', 'npc_training_form_id'];
+    protected $fillable = ['first_name', 'middle_name', 'status', 'last_name', 'registration_number', 'designation', 'gender', 'dob', 'citizenship_number', 'issued_district', 'email', 'contact_number', 'qualification', 'institution_attended', 'graduation_year', 'workplace_name', 'workplace_address', 'position', 'employment_type', 'roles', 'training_reason', 'declaration_date', 'declaration_place', 'npc_training_form_id', 'remarks'];
 
     protected static function boot()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications\Auth;
+namespace App\Notifications\Application;
 
 use App\Broadcasting\SmsChannel;
 use Illuminate\Bus\Queueable;
@@ -8,18 +8,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class RegistrationNotification extends Notification
+class RejectApplicationNotification extends Notification
 {
     use Queueable;
 
-    protected $user;
+    protected $user, $remarks;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct($user)
+    public function __construct($user, $remarks)
     {
         $this->user = $user;
+        $this->remarks = $remarks;
     }
 
     /**
@@ -37,10 +38,11 @@ class RegistrationNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)
-            ->subject('Verify Your Account - Nepal Pharmacy Council')
-            ->markdown('emails.pages.registration_otp', [
+         return (new MailMessage)
+            ->subject('Application Rejected - Nepal Pharmacy Council')
+            ->markdown('emails.pages.application_reject', [
                 'user' => $this->user,
+                'remarks' => $this->remarks
             ]);
     }
 
@@ -49,7 +51,7 @@ class RegistrationNotification extends Notification
      */
     public function toSms($notifiable): string
     {
-        return "{$this->user->otp} is your OTP token for Nepal Pharmacy Council.";
+        return "Your application has been rejected for the following reason: {$this->remarks}";
     }
 
     /**
