@@ -29,7 +29,7 @@ class RegistrationNotification extends Notification implements ShouldQueue
      */
     public function via(object $notifiable): array
     {
-        return ['mail', \App\Broadcasting\SmsChannel::class];
+        return ['mail', SmsChannel::class];
     }
 
     /**

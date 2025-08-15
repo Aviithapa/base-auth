@@ -24,6 +24,7 @@ class SmsChannel
             $smsHandler = new SmsHandler();
             $response = $smsHandler->send($notifiable->phone, $message);
 
+            Log::error($response);
             // Optional: log response if failed
             if (is_object($response) && isset($response->response_code) && $response->response_code === 1001) {
                 Log::error('Failed to send SMS', [
