@@ -97,8 +97,13 @@
                                     </div>
 
                                     <div class="mt-4 mb-4 text-center">
-                                        <span class="reset-password-link">Didn't receive OTP?  <a
-                                                class="btn-link font-danger underline" href="#">Resend</a></span>
+                                        <span class="reset-password-link">
+                                            Didn't receive OTP?
+                                            <a id="resend-link" class="btn-link font-danger underline"
+                                                href="{{ route('auth.otp.resend') }}">Resend</a>
+                                            <span id="countdown" style="color:gray;"></span>
+                                        </span>
+
                                     </div>
                                 </form>
                             </div>
@@ -108,6 +113,32 @@
             </div>
         </div>
     </div>
+    <script>
+        let cooldown = 120; // 2 minutes in seconds
+        let resendLink = document.getElementById('resend-link');
+        let countdown = document.getElementById('countdown');
+
+        function startCountdown() {
+            resendLink.style.pointerEvents = 'none';
+            resendLink.style.color = 'gray';
+            countdown.textContent = ` (${cooldown}s)`;
+
+            let timer = setInterval(() => {
+                cooldown--;
+                countdown.textContent = ` (${cooldown}s)`;
+                if (cooldown <= 0) {
+                    clearInterval(timer);
+                    countdown.textContent = '';
+                    resendLink.style.pointerEvents = 'auto';
+                    resendLink.style.color = 'red';
+                }
+            }, 1000);
+        }
+
+        // If you want countdown to start immediately after page load (e.g., from session)
+        startCountdown();
+    </script>
+
     <!-- latest jquery-->
     <script src="../assets/js/jquery.min.js"></script>
     <!-- feather icon js-->

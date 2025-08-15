@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Notifications\Auth\RegistrationNotification;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
@@ -34,11 +35,7 @@ class AuthController extends Controller
         $password = $request->input('password');
         $remember = $request->filled('remember');
 
-
-        // Determine login field type
         $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'phone';
-
-        // Create throttle key by combining login and IP
         $throttleKey = Str::lower($login) . '|' . $request->ip();
 
         if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
@@ -50,15 +47,32 @@ class AuthController extends Controller
                 ->onlyInput('login');
         }
 
-        // Attempt to authenticate with dynamic field
         if (Auth::attempt([$field => $login, 'password' => $password], $remember)) {
-            $request->session()->regenerate(); // Prevent session fixation
-            RateLimiter::clear($throttleKey); // Clear throttle on success
+            $user = Auth::user();
+
+            if ($user->status !== 'active') {
+                $otp = random_int(10000, 99999);
+                $user->update([
+                    'email_verification_token' => $otp,
+                    'phone_otp' => $otp,
+                    'last_otp_sent_at' => now('UTC'),
+                ]);
+                $user->notify(new RegistrationNotification($user));
+
+                session(['otp_user_id' => $user->id]);
+
+                Auth::logout(); // Don’t keep them logged in yet
+
+                return redirect()->route('auth.otp')->with('status', 'Your account is not activated. A new OTP has been sent to verify your account.');
+            }
+
+            $request->session()->regenerate();
+            RateLimiter::clear($throttleKey);
+
             return redirect()->intended('/dashboard');
         }
 
-        // Increment login attempts
-        RateLimiter::hit($throttleKey, 60); // Lockout for 60 seconds
+        RateLimiter::hit($throttleKey, 60);
 
         return back()
             ->withErrors([
@@ -92,6 +106,8 @@ class AuthController extends Controller
                 'email_verification_token' => $request->email ? $otp : null,
                 'phone_otp' => $otp,
                 'is_phone_verified' => false,
+                'last_otp_sent_at' => now(),
+                'status' => 'inactive',
             ]);
 
             $user->assignRole('user');
@@ -139,7 +155,6 @@ class AuthController extends Controller
                 ->withErrors(['otp' => 'User not found.']);
         }
 
-
         if ($user->email_verification_token !== $request->otp) {
             return back()->withErrors(['otp' => 'Invalid OTP. Please try again.']);
         }
@@ -150,6 +165,7 @@ class AuthController extends Controller
             'email_verification_token' => null, // clear OTP
             'phone_otp' => null, // clear OTP
             'email_verified_at' => now(), // optional if also verifying email
+            'status' => 'active',
         ]);
 
         Auth::login($user); // Log user in
@@ -157,6 +173,40 @@ class AuthController extends Controller
         session()->forget('otp_user_id'); // Clean session
 
         return redirect()->route('dashboard')->with('success', 'Welcome, your account is verified.');
+    }
+
+    public function resendOtp()
+    {
+        $userId = session('otp_user_id');
+        if (!$userId) {
+            return redirect()
+                ->route('auth.register')
+                ->withErrors(['otp' => 'No user session found.']);
+        }
+
+        $user = User::findOrFail($userId);
+        $nowUtc = Carbon::now('UTC');
+
+        // Ensure both times are UTC
+        $lastSentAtUtc = $user->last_otp_sent_at ? Carbon::parse($user->last_otp_sent_at)->setTimezone('UTC') : null;
+
+        if ($lastSentAtUtc && $lastSentAtUtc->diffInRealSeconds($nowUtc) < 120) {
+            $secondsLeft = 120 - $lastSentAtUtc->diffInRealSeconds($nowUtc);
+            return back()->withErrors([
+                'otp' => "Please wait {$secondsLeft} seconds before resending.",
+            ]);
+        }
+
+        $otp = random_int(10000, 99999);
+        $user->update([
+            'email_verification_token' => $otp,
+            'phone_otp' => $otp,
+            'last_otp_sent_at' => $nowUtc,
+        ]);
+
+        $user->notify(new RegistrationNotification($user));
+
+        return back()->with('status', 'OTP resent successfully.');
     }
 
     public function logout(Request $request)

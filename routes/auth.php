@@ -18,6 +18,8 @@ Route::prefix('auth')->middleware('redirect.authenticated')->group(function () {
         Route::get('/otp-verify', 'showOtpForm')->name('auth.otp');
         Route::post('/otp-verify', 'verifyOtp')->name('auth.otp.verify');
 
+        Route::get('/otp/resend', 'resendOtp')->name('auth.otp.resend');
+
     });
 
     Route::prefix('forgot-password')->controller(ForgotController::class)->group(function () {
