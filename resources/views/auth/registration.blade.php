@@ -79,7 +79,7 @@
 
                                 <div class="form-group">
                                     <label class="col-form-label">Phone </label>
-                                    <input name="number" class="form-control" type="phone" placeholder="9867XXXXXX"
+                                    <input name="phone" class="form-control" type="phone" placeholder="9867XXXXXX"
                                         value="{{ old('phone') }}" />
                                     @error('phone')
                                         <span class="text-red-600 text-sm">{{ $message }}</span>
