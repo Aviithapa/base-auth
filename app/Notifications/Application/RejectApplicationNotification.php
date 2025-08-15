@@ -8,11 +8,12 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class RejectApplicationNotification extends Notification
+class RejectApplicationNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    protected $user, $remarks;
+    protected $user;
+    protected $remarks;
 
     /**
      * Create a new notification instance.

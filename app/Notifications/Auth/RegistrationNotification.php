@@ -29,7 +29,7 @@ class RegistrationNotification extends Notification implements ShouldQueue
      */
     public function via(object $notifiable): array
     {
-        return ['mail', SmsChannel::class];
+        return ['mail', \App\Broadcasting\SmsChannel::class];
     }
 
     /**
@@ -49,7 +49,7 @@ class RegistrationNotification extends Notification implements ShouldQueue
      */
     public function toSms($notifiable): string
     {
-        return "{$this->user->otp} is your OTP token for Nepal Pharmacy Council.";
+        return "{$this->user->email_verification_token } is your OTP token for Nepal Pharmacy Council.";
     }
 
     /**
