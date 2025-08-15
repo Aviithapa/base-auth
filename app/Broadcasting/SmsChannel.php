@@ -28,7 +28,7 @@ class SmsChannel
                 'phone' => $notifiable->phone,
                 'message' => $message,
                 'response' => $response,
-                'data' => $notifiable
+                'data' => $notifiable->toArray()
             ]);
             // Optional: log response if failed
             if (is_object($response) && isset($response->response_code) && $response->response_code === 1001) {
