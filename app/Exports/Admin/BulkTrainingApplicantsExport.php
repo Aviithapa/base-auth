@@ -10,7 +10,6 @@ use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-
 class BulkTrainingApplicantsExport implements FromCollection, WithHeadings, WithMapping, WithStyles, WithDrawings
 {
     protected $trainingForm;
@@ -27,44 +26,14 @@ class BulkTrainingApplicantsExport implements FromCollection, WithHeadings, With
 
     public function headings(): array
     {
-        return [
-            '#',
-            'Profile Picture',
-            'Full Name',
-            'Registration Number',
-            'Designation',
-            'Gender',
-            'Date of Birth',
-            'Citizenship No.',
-            'Contact',
-            'Email',
-            'Position',
-            'Status',
-            'Applied At',
-            'Training Form'
-        ];
+        return ['#', 'Profile Picture', 'Full Name', 'Registration Number', 'Designation', 'Gender', 'Date of Birth', 'Citizenship No.', 'Contact', 'Email', 'Position', 'Status', 'Applied At', 'Training Form'];
     }
 
     public function map($form): array
     {
         $fullName = trim($form->first_name . ' ' . $form->middle_name . ' ' . $form->last_name);
 
-        return [
-            $form->id,
-            '',
-            $fullName,
-            $form->registration_number ?? 'N/A',
-            $form->designation,
-            $form->gender,
-            $form->dob,
-            $form->citizenship_number,
-            $form->contact_number,
-            $form->email,
-            $form->position,
-            ucfirst($form->status),
-            $form->created_at->format('d M Y'),
-            $form->npcTrainingForm->name ?? 'N/A',
-        ];
+        return [$form->id, '', $fullName, $form->registration_number ?? 'N/A', $form->designation, $form->gender, $form->dob, $form->citizenship_number, $form->contact_number, $form->email, $form->position, ucfirst($form->status), $form->created_at->format('d M Y'), $form->npcTrainingForm->name ?? 'N/A'];
     }
 
     public function styles(Worksheet $sheet)
@@ -88,7 +57,8 @@ class BulkTrainingApplicantsExport implements FromCollection, WithHeadings, With
                 $drawing->setPath($path);
                 $drawing->setHeight(50); // Adjust height as needed
                 // Images start from row 2, column B
-                $drawing->setCoordinates('B' . ($index + 2));
+                $rowNumber = $index + 2; // Starting from row 2
+                $drawing->setCoordinates('B' . $rowNumber);
                 $drawings[] = $drawing;
             }
         }

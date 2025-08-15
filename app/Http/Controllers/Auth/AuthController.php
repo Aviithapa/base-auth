@@ -97,25 +97,30 @@ class AuthController extends Controller
         DB::beginTransaction();
 
         try {
-            $otp = random_int(10000, 99999); // 5-digit OTP
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'password' => Hash::make($request->password),
-                'email_verification_token' => $request->email ? $otp : null,
-                'phone_otp' => $otp,
-                'is_phone_verified' => false,
-                'last_otp_sent_at' => now(),
-                'status' => 'inactive',
-            ]);
+            // Get validated data except password
+            $data = $request->safe()->except(['password']);
+            $data['password'] = Hash::make($request->password);
 
+            // Generate OTP
+            $otp = random_int(10000, 99999);
+            $data['email_verification_token'] = $request->filled('email') ? $otp : null;
+            $data['phone_otp'] = $otp;
+            $data['is_phone_verified'] = false;
+            $data['last_otp_sent_at'] = now('UTC'); // ✅ Store in UTC
+            $data['status'] = 'inactive';
+
+            // Create user
+            $user = User::create($data);
+
+            // Assign default role
             $user->assignRole('user');
 
+            // Send notification
             $user->notify(new RegistrationNotification($user));
 
             DB::commit();
 
+            // Store user ID for OTP verification
             session(['otp_user_id' => $user->id]);
 
             return redirect()->route('auth.otp')->with('status', 'Registered! Please verify your email and phone.');

@@ -47,7 +47,8 @@
                 <table style="margin: 0 auto 30px">
                     <tr>
                         <td>
-                            <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo" style="height: 40px;" />
+                            <img class="max-w-full h-auto" src="{{ public_path('assets/images/logo-certificate.png') }}"
+                                alt="" />
                         </td>
                         <td style="text-align: right; color: #999;">
                             <span>Registration Confirmation</span>
