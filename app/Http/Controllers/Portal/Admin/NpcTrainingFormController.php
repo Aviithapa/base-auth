@@ -162,7 +162,7 @@ class NpcTrainingFormController extends Controller
 
         $pdf = Pdf::loadView('pdf.certificate', compact('trainingForm', 'formApplication', 'qrCodeBase64'))->setPaper('a4', 'landscape');
 
-        return $pdf->download('certificate-' . $id . '.pdf');
+        return $pdf->download($formApplication->name . '-' . $trainingForm->name . '-certificate-' . $id . '.pdf');
     }
 
 }
