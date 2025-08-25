@@ -18,7 +18,7 @@ class UpdateNpcTrainingFormRequest extends FormRequest
     {
         return [
             'first_name' => 'required|string|max:255',
-            'middle_name' => 'required|string|max:255',
+            'middle_name' => 'nullable|string|max:255',
             'last_name' => 'required|string|max:255',
             'registration_number' => 'required|string|max:255',
             'designation' => 'required|string',

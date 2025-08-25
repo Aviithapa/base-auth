@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('npc_training_form_applications', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
-            $table->string('middle_name');
+            $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->string('registration_number');
             $table->string('designation');

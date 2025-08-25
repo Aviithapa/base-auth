@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('email_verification_token')->nullable(); // Optional if not using Laravel's default
             $table->string('phone_otp')->nullable();
 
-            $table->enum('status', ['active', 'in-active', 'suspended', 'pending'])->default('in-active');
+            $table->enum('status', ['active', 'inactive', 'suspended', 'pending'])->default('inactive');
 
             $table->rememberToken(); // Adds remember_token
             $table->timestamps();
