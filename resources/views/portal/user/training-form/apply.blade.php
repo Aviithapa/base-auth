@@ -74,7 +74,7 @@
                                     <label class="form-label" for="validationTooltip02">Middle
                                         Name</label><input class="form-control" id="validationTooltip02" type="text"
                                         placeholder="Otto" name="middle_name"
-                                        value="{{ old('middle_name', $profile->middle_name ?? '') }}" required />
+                                        value="{{ old('middle_name', $profile->middle_name ?? '') }}" />
                                     @error('middle_name')
                                         <div class="text-red-600 text-sm">{{ $message }}</div>
                                     @enderror
