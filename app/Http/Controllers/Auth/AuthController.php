@@ -112,8 +112,11 @@ class AuthController extends Controller
             // Create user
             $user = User::create($data);
 
-            // Assign default role
-            $user->assignRole('user');
+            if ($data['role'] === 'Expert') {
+                $user->assignRole('expert');
+            } else {
+                $user->assignRole('user');
+            }
 
             // Send notification
             $user->notify(new RegistrationNotification($user));

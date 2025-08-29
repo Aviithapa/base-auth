@@ -13,20 +13,15 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-      public function run(): void
+    public function run(): void
     {
         // Create roles
         $adminRole = Role::firstOrCreate(['name' => 'admin']);
-        $userRole  = Role::firstOrCreate(['name' => 'user']);
+        $userRole = Role::firstOrCreate(['name' => 'user']);
+        $expertRole = Role::firstOrCreate(['name' => 'expert']);
 
         // Create permissions
-        $permissions = [
-            'edit form',
-            'delete form',
-            'view dashboard',
-            'add form',
-            'show form'
-        ];
+        $permissions = ['edit form', 'delete form', 'view dashboard', 'add form', 'show form'];
 
         foreach ($permissions as $perm) {
             Permission::firstOrCreate(['name' => $perm]);
@@ -46,7 +41,7 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('password'), // Change for production
                 'is_phone_verified' => 1,
                 'status' => 'active',
-            ]
+            ],
         );
         $adminUser->assignRole($adminRole);
 
@@ -60,8 +55,21 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('password'), // Change for production
                 'is_phone_verified' => 0,
                 'status' => 'active',
-            ]
+            ],
         );
         $normalUser->assignRole($userRole);
+
+        $expertUser = User::firstOrCreate(
+            ['email' => 'expert@example.com'],
+            [
+                'name' => 'Normal User',
+                'phone' => '9821111111',
+                'email_verified_at' => now(),
+                'password' => Hash::make('password'), // Change for production
+                'is_phone_verified' => 0,
+                'status' => 'active',
+            ],
+        );
+        $expertUser->assignRole($expertRole);
     }
 }

@@ -54,6 +54,24 @@
                                 <h4>Create your account</h4>
                                 <p>Enter your personal details to create account</p>
 
+                                <div class="form-group mb-6 flex gap-4 justify-center">
+                                    <div id="role-expert"
+                                        class="role-card cursor-pointer border p-5 text-center rounded-lg shadow hover:bg-blue-100 flex-1 flex flex-col justify-center items-center">
+                                        <h3 class="text-lg font-semibold mb-2">Expert</h3>
+                                        <p class="text-sm text-gray-600">Sign up to provide training</p>
+                                    </div>
+
+                                    <div id="role-applicant"
+                                        class="role-card cursor-pointer border p-5 text-center rounded-lg shadow hover:bg-blue-100 flex-1 flex flex-col justify-center items-center">
+                                        <h3 class="text-lg font-semibold mb-2">Applicant</h3>
+                                        <p class="text-sm text-gray-600">Sign up to learn and register for training.</p>
+                                    </div>
+
+                                    <!-- Hidden input for backend -->
+                                    <input type="hidden" name="role" id="roleInput" value="">
+                                </div>
+
+
                                 <div class="form-group">
                                     <label class="col-form-label pt-0">Your Name</label>
                                     <div class="grid grid-cols-12 gap-2">
@@ -104,7 +122,8 @@
 
                                         <label class="text-muted" for="terms">
                                             I agree to the terms & conditions and <a class="ms-2"
-                                                href="#">Privacy Policy</a>
+                                                href="#">Privacy
+                                                Policy</a>
                                         </label>
                                         @error('terms')
                                             <span class="text-red-600 text-sm">{{ $message }}</span>
@@ -139,6 +158,27 @@
         <!-- Plugins JS Ends--><!-- Theme js-->
         <script src="../assets/js/script.js"></script>
         <script src="../assets/js/script1.js"></script>
+        <script>
+            const roleCards = document.querySelectorAll('.role-card');
+            const roleInput = document.getElementById('roleInput');
+
+            // Function to select a card
+            function selectCard(card) {
+                roleCards.forEach(c => c.classList.remove('bg-primary', 'text-white'));
+                card.classList.add('bg-primary', 'text-white');
+                roleInput.value = card.querySelector('h3').textContent.trim();
+            }
+
+            // Set default selection to Applicant
+            const defaultCard = document.getElementById('role-applicant');
+            selectCard(defaultCard);
+
+            // Add click event to all cards
+            roleCards.forEach(card => {
+                card.addEventListener('click', () => selectCard(card));
+            });
+        </script>
+
     </div>
 </body>
 

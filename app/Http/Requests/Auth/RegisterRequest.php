@@ -32,6 +32,7 @@ class RegisterRequest extends FormRequest
                 'regex:/[@$!%*#?&]/', // at least one special char
             ],
             'terms' => 'accepted',
+            'role' => 'required|in:Expert,Applicant',
         ];
     }
 

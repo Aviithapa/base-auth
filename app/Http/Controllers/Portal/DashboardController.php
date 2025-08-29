@@ -21,6 +21,8 @@ class DashboardController extends Controller
             return view('portal.dashboard.admin', compact('totalTraining', 'userCount', 'applicationCount', 'applicationCountApproved'));
         } elseif (Auth::user()->hasRole('user')) {
             return view('portal.dashboard.user');
+        } elseif (Auth::user()->hasRole('expert')) {
+            return view('portal.dashboard.expert');
         } else {
             return view('portal.dashboard.default');
         }

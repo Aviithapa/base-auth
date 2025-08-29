@@ -40,6 +40,8 @@
                 @include('portal.sidebar.admin')
             @elseif (Auth::user()->hasRole('user'))
                 @include('portal.sidebar.user')
+            @elseif (Auth::user()->hasRole('expert'))
+                @include('portal.sidebar.expert')
             @else
                 @include('portal.sidebar.default')
             @endif
